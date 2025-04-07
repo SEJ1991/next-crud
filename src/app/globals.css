@@ -9,26 +9,30 @@
   --color-black-tertiary: #2e2e2e;
   --color-gray-primary: #d9dde2;
   --color-dark-gray-primary: #4d4e51;
-
   --color-theme-primary: var(--color-white-primary);
   --color-opposite-primary: #191919;
-
   --color-text-primary: #000;
+  --color-shadow-primary: var(--color-gray-primary);
+
+  --size-header-height: 3.75rem;
 }
 
 .dark {
   --color-theme-primary: var(--color-black-primary);
   --color-opposite-primary: var(--color-white-primary);
-
   --color-text-primary: var(--color-white-primary);
+  --color-shadow-primary: var(--color-dark-gray-primary);
 }
 
 @theme {
   --color-theme-primary: var(--color-theme-primary);
   --color-opposite-theme-primary: var(--color-opposite-primary);
+  --color-shadow-primary: var(--color-shadow-primary);
 
   --breakpoint-xs: 26.563rem; /*  425px */
   --breakpoint-s: 33.75rem; /* 540px */
+
+  --height-header-h: var(--size-header-height);
 }
 
 @layer base {
@@ -36,7 +40,17 @@
     color: var(--color-text-primary);
   }
 
+  body {
+    @apply w-dvw min-h-dvh;
+  }
+
   button {
     @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
   }
 }
