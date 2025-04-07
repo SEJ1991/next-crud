@@ -40,7 +40,17 @@
     color: var(--color-text-primary);
   }
 
+  body {
+    @apply w-dvw min-h-dvh;
+  }
+
   button {
     @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
   }
 }
