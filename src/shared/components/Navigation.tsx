@@ -12,10 +12,10 @@ interface Props extends ComponentPropsWithoutRef<'nav'> {
 }
 export function Navigation({ items = [], ...props }: Props) {
   const pathname = usePathname();
-  const [isMount, setIsMount] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setIsMount(true);
+    setMounted(true);
   }, []);
 
   return (
@@ -30,7 +30,7 @@ export function Navigation({ items = [], ...props }: Props) {
             className={`relative ${isActive ? 'text-red-300' : 'text-white'}`}
           >
             {label}
-            {isMount && isActive && (
+            {mounted && isActive && (
               <Indicator
                 layoutId='nav-indicator'
                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
