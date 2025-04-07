@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Header, Navigation, Providers } from '@/shared';
+import { Header, Navigation, Providers, ThemeButton } from '@/shared';
 import './globals.css';
 
 const geistSans = Geist({
@@ -26,10 +26,13 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header className='flex justify-between p-2'>
-          <Navigation className='h-full' items={NAVS} />
-        </Header>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header className='flex justify-between p-2'>
+            <Navigation className='h-full' items={NAVS} />
+            <ThemeButton />
+          </Header>
+          {children}
+        </Providers>
       </body>
     </html>
   );
