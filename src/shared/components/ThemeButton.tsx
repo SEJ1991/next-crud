@@ -3,6 +3,7 @@ import React, { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import { BiMoon, BiSun } from 'react-icons/bi';
 import { twMerge } from 'tailwind-merge';
 import { useTheme } from 'next-themes';
+import { Spinner } from '@/shared/components/atoms/Spinner';
 
 interface Props extends ComponentPropsWithoutRef<'button'> {
   size?: string;
@@ -31,7 +32,7 @@ export function ThemeButton({ size = '2rem', ...props }: Props) {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) return <Spinner />;
 
   return (
     <button
