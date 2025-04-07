@@ -1,1 +1,42 @@
 @import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-white-primary: #fff;
+  --color-black-primary: #191919;
+  --color-black-secondary: #1e1e1e;
+  --color-black-tertiary: #2e2e2e;
+  --color-gray-primary: #d9dde2;
+  --color-dark-gray-primary: #4d4e51;
+
+  --color-theme-primary: var(--color-white-primary);
+  --color-opposite-primary: #191919;
+
+  --color-text-primary: #000;
+}
+
+.dark {
+  --color-theme-primary: var(--color-black-primary);
+  --color-opposite-primary: var(--color-white-primary);
+
+  --color-text-primary: var(--color-white-primary);
+}
+
+@theme {
+  --color-theme-primary: var(--color-theme-primary);
+  --color-opposite-theme-primary: var(--color-opposite-primary);
+
+  --breakpoint-xs: 26.563rem; /*  425px */
+  --breakpoint-s: 33.75rem; /* 540px */
+}
+
+@layer base {
+  html {
+    color: var(--color-text-primary);
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+}
