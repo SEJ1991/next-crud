@@ -6,13 +6,13 @@ import { useTheme } from 'next-themes';
 import { Spinner } from '@/shared/components/atoms/Spinner';
 
 interface Props extends ComponentPropsWithoutRef<'button'> {
-  size?: string;
+  iconSize?: string;
 }
 /**
  * 다크/라이트 모드 스위칭 버튼
- * @property {string | undefined} size react-icons 사이즈 (기본값: 2rem)
+ * @property {string | undefined} iconSize react-icons 사이즈 (기본값: 2rem)
  */
-export function ThemeButton({ size = '2rem', ...props }: Props) {
+export function ThemeButton({ iconSize = '2rem', ...props }: Props) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -22,17 +22,16 @@ export function ThemeButton({ size = '2rem', ...props }: Props) {
   };
 
   const ThemeIcon = () => {
-    const iconClassName = 'text-opposite-theme-primary transition-colors duration-300';
+    if (!mounted) return <Spinner />;
 
-    if (theme === 'dark') return <BiMoon className={iconClassName} size={size} />;
-    return <BiSun className={iconClassName} size={size} />;
+    const iconClassName = 'text-opposite-theme-primary transition-colors duration-300';
+    if (theme === 'dark') return <BiMoon className={iconClassName} size={iconSize} />;
+    return <BiSun className={iconClassName} size={iconSize} />;
   };
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  if (!mounted) return <Spinner />;
 
   return (
     <button
