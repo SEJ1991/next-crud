@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'N-CRUD',
+  title: 'NC-CRUD | HOME',
   description: 'Next.js CRUD reference website',
 };
 
