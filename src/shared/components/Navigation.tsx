@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface Props extends ComponentPropsWithoutRef<'nav'> {
-  items?: { href: string; label: string }[];
+  items?: { href: string; label: React.ReactNode }[];
   Indicator?: React.ReactNode;
 }
 export function Navigation({ items = [], Indicator, ...props }: Props) {
@@ -22,7 +22,7 @@ export function Navigation({ items = [], Indicator, ...props }: Props) {
         const isActive = pathname && (pathname === href || pathname.startsWith(href + '/'));
 
         return (
-          <NextLink key={label} href={href} className='relative font-semibold'>
+          <NextLink key={href} href={href} className='relative font-semibold'>
             {label}
             {mounted && isActive && Indicator}
           </NextLink>
