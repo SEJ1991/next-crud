@@ -1,6 +1,6 @@
 'use client';
+import { NextLink } from '@/shared';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
@@ -24,7 +24,7 @@ export function Navigation({ items = [], ...props }: Props) {
         const isActive = pathname && (pathname === href || pathname.startsWith(href + '/'));
 
         return (
-          <Link key={label} href={href} className='relative font-semibold'>
+          <NextLink key={label} href={href} className='relative font-semibold'>
             {label}
             {mounted && isActive && (
               <Indicator
@@ -33,7 +33,7 @@ export function Navigation({ items = [], ...props }: Props) {
                 className='absolute left-1/2 w-2 h-2 rounded-full bg-accent-primary -translate-x-1/2'
               />
             )}
-          </Link>
+          </NextLink>
         );
       })}
     </nav>
