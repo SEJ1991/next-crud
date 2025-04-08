@@ -6,7 +6,7 @@ export function SideBar(props: ComponentPropsWithoutRef<'aside'>) {
     <aside
       {...props}
       className={twMerge(
-        'sticky border-r border-shadow-primary h-dvh pt-top-with-header-h',
+        'sticky border-r border-border-primary h-dvh pt-top-with-header-h',
         props.className
       )}
     >
