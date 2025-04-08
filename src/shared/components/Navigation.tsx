@@ -24,17 +24,13 @@ export function Navigation({ items = [], ...props }: Props) {
         const isActive = pathname && (pathname === href || pathname.startsWith(href + '/'));
 
         return (
-          <Link
-            key={label}
-            href={href}
-            className={`relative ${isActive ? 'text-red-300' : 'text-white'}`}
-          >
+          <Link key={label} href={href} className='relative font-semibold'>
             {label}
             {mounted && isActive && (
               <Indicator
                 layoutId='nav-indicator'
                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                className='absolute left-1/2 w-2 h-2 rounded-full bg-amber-400 -translate-x-1/2'
+                className='absolute left-1/2 w-2 h-2 rounded-full bg-accent-primary -translate-x-1/2'
               />
             )}
           </Link>
