@@ -16,7 +16,7 @@
   --color-opposite-primary: #191919;
   --color-text-primary: #000;
 
-  --color-shadow-primary: var(--color-gray-primary);
+  --color-border-primary: var(--color-gray-primary);
   --color-accent-primary: var(--color-purple-primary);
 
   --size-header-height: 3.75rem;
@@ -28,7 +28,7 @@
   --color-theme-primary: var(--color-black-primary);
   --color-opposite-primary: var(--color-white-primary);
   --color-text-primary: var(--color-white-primary);
-  --color-shadow-primary: var(--color-dark-gray-primary);
+  --color-border-primary: var(--color-dark-gray-primary);
 }
 
 @theme {
@@ -44,7 +44,7 @@
   --color-theme-primary: var(--color-theme-primary);
   --color-opposite-theme-primary: var(--color-opposite-primary);
 
-  --color-shadow-primary: var(--color-shadow-primary);
+  --color-border-primary: var(--color-border-primary);
   --color-accent-primary: var(--color-accent-primary);
 
   --breakpoint-xs: 26.563rem; /*  425px */
