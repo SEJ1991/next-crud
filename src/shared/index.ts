@@ -6,3 +6,5 @@ export * from './components/ThemeButton';
 export * from './components/Navigation';
 export * from './components/atoms/Spinner';
 export * from './components/atoms/Header';
+export * from './components/atoms/PageFrame';
+export * from './components/atoms/NextLink';

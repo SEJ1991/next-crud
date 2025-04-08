@@ -1,5 +1,4 @@
-import { PageFrame } from '@/shared/components/atoms/PageFrame';
-import Link from 'next/link';
+import { NextLink, PageFrame } from '@/shared';
 
 export default function Home() {
   return (
@@ -8,14 +7,12 @@ export default function Home() {
         <h1 className='text-4xl text-accent-primary'>Next.js CRUD reference website.</h1>
         <h2 className='text-2xl'>Domain structure.</h2>
       </div>
-      <Link
+      <NextLink
         href='https://github.com/SEJ1991/next-crud'
-        target='_blank'
-        rel='noopener noreferrer'
         className='animate-bounce transition-opacity duration-300 hover:opacity-75'
       >
         Github ↗️
-      </Link>
+      </NextLink>
     </PageFrame>
   );
 }
