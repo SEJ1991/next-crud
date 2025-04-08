@@ -72,6 +72,10 @@
 }
 
 @layer utilities {
+  .max-content-width {
+    max-width: 120rem;
+  }
+
   .flex-center {
     @apply flex justify-center items-center;
   }
