@@ -20,6 +20,8 @@
   --color-accent-primary: var(--color-purple-primary);
 
   --size-header-height: 3.75rem;
+  --size-page-frame-padding-x: 1rem;
+  --size-page-frame-padding-y: 2rem;
 }
 
 .dark {
@@ -49,6 +51,10 @@
   --breakpoint-s: 33.75rem; /* 540px */
 
   --height-header-h: var(--size-header-height);
+
+  --padding-page-frame-x: var(--size-page-frame-padding-x);
+  --padding-page-frame-y: var(--size-page-frame-padding-y);
+  --padding-top-with-header-h: calc(var(--size-header-height) + var(--size-page-frame-padding-y));
 }
 
 @layer base {
