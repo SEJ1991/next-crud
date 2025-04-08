@@ -9,6 +9,9 @@
   --color-black-tertiary: #2e2e2e;
   --color-gray-primary: #d9dde2;
   --color-dark-gray-primary: #4d4e51;
+  --color-blue-primary: #3b82f6;
+  --color-purple-primary: #8b5cf6;
+  --color-accent-primary: var(--color-purple-primary);
   --color-theme-primary: var(--color-white-primary);
   --color-opposite-primary: #191919;
   --color-text-primary: #000;
@@ -28,6 +31,7 @@
   --color-theme-primary: var(--color-theme-primary);
   --color-opposite-theme-primary: var(--color-opposite-primary);
   --color-shadow-primary: var(--color-shadow-primary);
+  --color-accent-primary: var(--color-accent-primary);
 
   --breakpoint-xs: 26.563rem; /*  425px */
   --breakpoint-s: 33.75rem; /* 540px */
