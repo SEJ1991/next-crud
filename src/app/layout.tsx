@@ -25,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[1920px] mx-auto`}
+      >
         <Providers>
           <Header className='flex justify-between p-2'>
             <Navigation
