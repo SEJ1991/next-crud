@@ -1,16 +1,14 @@
 'use client';
 import { NextLink } from '@/shared';
-import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-export const Indicator = motion.div;
-
 interface Props extends ComponentPropsWithoutRef<'nav'> {
   items?: { href: string; label: string }[];
+  Indicator?: React.ReactNode;
 }
-export function Navigation({ items = [], ...props }: Props) {
+export function Navigation({ items = [], Indicator, ...props }: Props) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
@@ -26,13 +24,7 @@ export function Navigation({ items = [], ...props }: Props) {
         return (
           <NextLink key={label} href={href} className='relative font-semibold'>
             {label}
-            {mounted && isActive && (
-              <Indicator
-                layoutId='nav-indicator'
-                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                className='absolute left-1/2 w-2 h-2 rounded-full bg-accent-primary -translate-x-1/2'
-              />
-            )}
+            {mounted && isActive && Indicator}
           </NextLink>
         );
       })}
