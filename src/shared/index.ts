@@ -1,3 +1,6 @@
+// axios
+export * from './axios/movie';
+
 // containers
 export * from './containers/Providers';
 
