@@ -37,6 +37,10 @@ function getLinks(pathname: string) {
   return [
     {
       href: '/movies',
+      label: 'All',
+    },
+    {
+      href: '/movies/now-playing',
       label: 'Now-playing',
     },
     {
