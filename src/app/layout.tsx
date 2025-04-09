@@ -33,7 +33,7 @@ export default function RootLayout({
             <nav>
               <LinkList
                 className='flex-center gap-2 h-full'
-                items={NAVS}
+                items={LINKS}
                 Indicator={
                   <Indicator
                     layoutId='header-indicator'
@@ -51,7 +51,7 @@ export default function RootLayout({
   );
 }
 
-const NAVS = [
+const LINKS = [
   { href: '/', label: 'Home' },
   { href: '/posts', label: 'Post' },
   { href: '/movies', label: 'Movie' },
