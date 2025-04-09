@@ -5,6 +5,7 @@ export * from './containers/Providers';
 export * from './components/ThemeButton';
 export * from './components/LinkList';
 export * from './components/ContentsNav';
+export * from './components/ContentsRow';
 export * from './components/atoms/Spinner';
 export * from './components/atoms/Header';
 export * from './components/atoms/PageFrame';
