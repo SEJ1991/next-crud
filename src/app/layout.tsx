@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Header, Navigation, Providers, ThemeButton, Indicator } from '@/shared';
+import { Header, LinkList, Providers, ThemeButton, Indicator } from '@/shared';
 import './globals.css';
 
 const geistSans = Geist({
@@ -30,16 +30,18 @@ export default function RootLayout({
       >
         <Providers>
           <Header className='flex justify-between p-2'>
-            <Navigation
-              className='h-full'
-              items={NAVS}
-              Indicator={
-                <Indicator
-                  layoutId='header-indicator'
-                  className='left-1/2 -translate-x-1/2 bg-accent-primary w-2 h-2 rounded-full'
-                />
-              }
-            />
+            <nav>
+              <LinkList
+                className='flex-center gap-2 h-full'
+                items={NAVS}
+                Indicator={
+                  <Indicator
+                    layoutId='header-indicator'
+                    className='left-1/2 -translate-x-1/2 bg-accent-primary w-2 h-2 rounded-full'
+                  />
+                }
+              />
+            </nav>
             <ThemeButton />
           </Header>
           {children}
