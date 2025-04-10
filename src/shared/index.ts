@@ -7,6 +7,7 @@ export * from './containers/Providers';
 // components
 export * from './components/ThemeButton';
 export * from './components/LinkList';
+export * from './components/GridList';
 export * from './components/ContentsNav';
 export * from './components/ContentsRow';
 export * from './components/atoms/Spinner';
