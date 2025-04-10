@@ -1,5 +1,6 @@
 'use client';
 import { getInfinitQueryOptionsForMovie, MovieStatus } from '@/domains/movie';
+import { useIntersectionObserver } from '@/shared/hooks/useIntersectionObserver';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 interface Props {
@@ -13,12 +14,19 @@ export function InfiniteMovieListContainer({
   limitPages,
 }: Props) {
   const {
-    data,
+    data: movies,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
     status: queryStatus,
-  } = useInfiniteQuery(getInfinitQueryOptionsForMovie({ status, initialPageParam, limitPages }));
+  } = useInfiniteQuery({
+    ...getInfinitQueryOptionsForMovie({ status, initialPageParam, limitPages }),
+    select: data => data?.pages.map(response => response.results).flat(),
+  });
+  const ref = useIntersectionObserver<HTMLDivElement>({
+    isAvailable: hasNextPage,
+    onIntersect: fetchNextPage,
+  });
 
-  return 1;
+  return <div></div>;
 }
