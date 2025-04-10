@@ -7,7 +7,7 @@ interface Props {
 }
 export default async function MoviesPage({ searchParams }: Props) {
   const queryClient = new QueryClient();
-  const page = Number(searchParams.page ?? '1');
+  const page = Number((await searchParams).page ?? '1');
 
   await queryClient.prefetchInfiniteQuery(
     getInfinitQueryOptionsForMovie({
