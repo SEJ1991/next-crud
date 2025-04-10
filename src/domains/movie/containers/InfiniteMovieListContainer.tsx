@@ -1,5 +1,6 @@
 'use client';
 import { getInfinitQueryOptionsForMovie, MovieGridList, MovieStatus } from '@/domains/movie';
+import { IntersectionPointer } from '@/shared';
 import { useIntersectionObserver } from '@/shared/hooks/useIntersectionObserver';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
@@ -26,12 +27,17 @@ export function InfiniteMovieListContainer({
   const ref = useIntersectionObserver<HTMLDivElement>({
     isAvailable: hasNextPage,
     onIntersect: fetchNextPage,
+    options: {
+      rootMargin: '0px 0px -100px 0px',
+    },
   });
 
+  if (queryStatus !== 'success') return <div>loading</div>;
+
   return (
-    <div>
+    <>
       <MovieGridList movies={movies} onClick={(id: number) => () => console.log(id)} />
-      {hasNextPage && <div ref={ref}>loading...</div>}
-    </div>
+      <IntersectionPointer ref={ref} isVisible={hasNextPage} isLoading={isFetchingNextPage} />
+    </>
   );
 }
