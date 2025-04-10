@@ -1,6 +1,5 @@
 'use client';
-import { getInfinitQueryOptionsForMovie, MovieStatus } from '@/domains/movie';
-import { GridList } from '@/shared';
+import { getInfinitQueryOptionsForMovie, MovieGridList, MovieStatus } from '@/domains/movie';
 import { useIntersectionObserver } from '@/shared/hooks/useIntersectionObserver';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
@@ -29,11 +28,5 @@ export function InfiniteMovieListContainer({
     onIntersect: fetchNextPage,
   });
 
-  return (
-    <GridList>
-      {movies?.map(movie => (
-        <li key={movie.id}>{movie.title}</li>
-      ))}
-    </GridList>
-  );
+  return <MovieGridList movies={movies} onClick={(id: number) => () => console.log(id)} />;
 }
