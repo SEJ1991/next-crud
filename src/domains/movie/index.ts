@@ -2,5 +2,5 @@ export * from './types';
 export * from './services/movie';
 export * from './services/queryOptions';
 
-// container
+// containers
 export * from './containers/InfiniteMovieListContainer';
