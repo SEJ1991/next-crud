@@ -10,6 +10,7 @@ export * from './components/LinkList';
 export * from './components/GridList';
 export * from './components/ContentsNav';
 export * from './components/ContentsRow';
+export * from './components/IntersectionPointer';
 export * from './components/atoms/Spinner';
 export * from './components/atoms/Header';
 export * from './components/atoms/PageFrame';
