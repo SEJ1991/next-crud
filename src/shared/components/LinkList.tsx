@@ -1,5 +1,6 @@
 'use client';
 import { NextLink } from '@/shared';
+import { LayoutGroup } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 
@@ -21,11 +22,11 @@ export function LinkList({ items = [], Indicator, ...props }: Props) {
         const isActive = pathname && (pathname === href || pathname.startsWith(href + '/'));
 
         return (
-          <li key={href}>
-            <NextLink href={href} className='relative font-semibold'>
+          <li key={href} className='relative'>
+            <NextLink href={href} className='font-semibold'>
               {label}
-              {mounted && isActive && Indicator}
             </NextLink>
+            <LayoutGroup>{mounted && isActive && Indicator}</LayoutGroup>
           </li>
         );
       })}

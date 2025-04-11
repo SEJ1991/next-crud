@@ -38,6 +38,7 @@ export default function RootLayout({
                   <Indicator
                     layoutId='header-indicator'
                     className='left-1/2 -translate-x-1/2 bg-accent-primary w-2 h-2 rounded-full'
+                    style={{ originY: '0px' }}
                   />
                 }
               />
