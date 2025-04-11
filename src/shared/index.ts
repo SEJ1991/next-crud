@@ -8,6 +8,7 @@ export * from './containers/Providers';
 export * from './components/ThemeButton';
 export * from './components/LinkList';
 export * from './components/HorizontalLinkListWithIndicator';
+export * from './components/VerticalLinkListWithIndicator';
 export * from './components/GridList';
 export * from './components/ContentsNav';
 export * from './components/ContentsRow';
