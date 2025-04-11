@@ -6,10 +6,10 @@ import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface Props extends ComponentPropsWithoutRef<'ul'> {
-  items?: { href: string; label: React.ReactNode }[];
+  links?: { href: string; label: React.ReactNode }[];
   indicatorProps?: HTMLMotionProps<'div'>;
 }
-export function HorizontalLinkListWithIndicator({ items = [], indicatorProps, ...props }: Props) {
+export function HorizontalLinkListWithIndicator({ links = [], indicatorProps, ...props }: Props) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
@@ -19,7 +19,7 @@ export function HorizontalLinkListWithIndicator({ items = [], indicatorProps, ..
 
   return (
     <ul {...props} className={twMerge('flex-center gap-2 h-full', props.className)}>
-      {items.map(({ href, label }) => {
+      {links.map(({ href, label }) => {
         const isActive = pathname && (pathname === href || pathname.startsWith(href + '/'));
 
         return (

@@ -32,7 +32,7 @@ export default function RootLayout({
           <Header className='flex justify-between p-2'>
             <nav>
               <HorizontalLinkListWithIndicator
-                items={LINKS}
+                links={LINKS}
                 indicatorProps={{
                   layoutId: 'header-indicator',
                 }}
