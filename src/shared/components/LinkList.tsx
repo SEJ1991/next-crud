@@ -21,11 +21,11 @@ export function LinkList({ items = [], Indicator, ...props }: Props) {
         const isActive = pathname && (pathname === href || pathname.startsWith(href + '/'));
 
         return (
-          <li key={href}>
-            <NextLink href={href} className='relative font-semibold'>
+          <li key={href} className='relative'>
+            <NextLink href={href} className='font-semibold'>
               {label}
-              {mounted && isActive && Indicator}
             </NextLink>
+            {mounted && isActive && Indicator}
           </li>
         );
       })}
