@@ -1,2 +1,2 @@
 // components
-export * from './component/MovieWidget';
+export * from './component/MovieWidget.tsx';
