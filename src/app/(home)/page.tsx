@@ -2,7 +2,7 @@ import { NextLink, ThemeButton } from '@/shared';
 
 export default function HomePage() {
   return (
-    <main className='flex flex-col justify-center items-center gap-4 w-full h-dvh'>
+    <>
       <ThemeButton iconClassName='size-6 md:size-8' />
       <h1 className='text-accent-primary text-2xl sm:text-3xl md:text-4xl'>
         Next.js CRUD reference website.
@@ -14,6 +14,6 @@ export default function HomePage() {
       >
         Github ↗️
       </NextLink>
-    </main>
+    </>
   );
 }
