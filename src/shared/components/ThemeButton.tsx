@@ -78,8 +78,8 @@ export function ThemeButton({ iconClassName, iconSize = '2rem', ...props }: Prop
   );
 }
 
-const MotionMoonIcon = motion(MoonIcon);
-const MotionSunIcon = motion(SunIcon);
+const MotionMoonIcon = motion.create(MoonIcon);
+const MotionSunIcon = motion.create(SunIcon);
 
 const ICON_VARIANTS = {
   initial: {
