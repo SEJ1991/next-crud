@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { Providers } from '@/shared';
 import './globals.css';
 
 const geistSans = Geist({
@@ -23,9 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className='w-full min-h-dvh max-contents-width mx-auto'>{children}</div>
+        <Providers>
+          <div id='portal-root' />
+          <div className='w-full min-h-dvh max-contents-width mx-auto'>{children}</div>
+        </Providers>
       </body>
     </html>
   );
