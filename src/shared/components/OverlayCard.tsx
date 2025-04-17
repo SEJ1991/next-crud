@@ -1,21 +1,13 @@
 'use client';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 import { createContext, useContext, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const HoverContext = createContext({ isHover: false });
 
-interface Props extends HTMLMotionProps<'div'> {
-  href: string;
-}
-export function WidgetLink({ href, ...props }: Props) {
-  const router = useRouter();
+export function OverlayCard(props: HTMLMotionProps<'div'>) {
   const [isHover, setIsHover] = useState(false);
 
-  const handleClick = () => {
-    router.push(href);
-  };
   const handleHoverStart = () => {
     setIsHover(true);
   };
@@ -29,7 +21,6 @@ export function WidgetLink({ href, ...props }: Props) {
       <motion.div
         {...props}
         className={twMerge('relative cursor-pointer', props.className)}
-        onClick={handleClick}
         onHoverStart={handleHoverStart}
         onHoverEnd={handleHoverEnd}
       >
@@ -39,7 +30,7 @@ export function WidgetLink({ href, ...props }: Props) {
   );
 }
 
-function HoverInfo(props: HTMLMotionProps<'div'>) {
+function HoverContents(props: HTMLMotionProps<'div'>) {
   const { isHover } = useContext(HoverContext);
 
   return (
@@ -58,4 +49,4 @@ function HoverInfo(props: HTMLMotionProps<'div'>) {
   );
 }
 
-WidgetLink.HoverInfo = HoverInfo;
+OverlayCard.HoverContents = HoverContents;
