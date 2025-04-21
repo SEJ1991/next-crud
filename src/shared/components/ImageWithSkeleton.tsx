@@ -3,7 +3,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { ComponentProps, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { Skeleton } from '@/shared';
 
 interface Props extends ComponentProps<typeof Image> {
   blockSkeleton?: boolean;
@@ -20,12 +21,12 @@ export function ImageWithSkeleton({ blockSkeleton = false, ...props }: Props) {
     <>
       <AnimatePresence>
         {!blockSkeleton && (!props.src || isLoading) && (
-          <motion.div
+          <Skeleton
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={twMerge('absolute size-full animate-pulse', props.className)}
+            className={twMerge('absolute size-full', props.className)}
           />
         )}
       </AnimatePresence>
