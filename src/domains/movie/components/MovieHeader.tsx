@@ -24,10 +24,9 @@ export function MovieHeader() {
     >
       <div
         className={clsx(
-          'absolute left-0 size-full transition-opacity duration-300',
+          'absolute left-0 size-full transition-opacity duration-300 bg-gradient-to-b from-black-primary to-[rgba(0,0,0,0)]',
           isAnimated ? 'opacity-0' : 'opacity-100'
         )}
-        style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0))' }}
       />
       <MovieNav className='z-1' />
     </header>
