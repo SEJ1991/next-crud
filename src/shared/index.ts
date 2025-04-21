@@ -11,7 +11,7 @@ export * from './components/icons/TrophyIcon';
 export * from './components/ImageWithSkeleton';
 export * from './components/NextLink';
 export * from './components/ThemeButton';
-export * from './components/OverlayCard';
+export * from './components/HoverOverlayCard';
 
 // utils
 export * from './utils/number';
