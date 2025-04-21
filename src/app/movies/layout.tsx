@@ -1,6 +1,10 @@
 interface Props {
   children: React.ReactNode;
 }
-export default function layout({ children }: Props) {
-  return <div>{children}</div>;
+export default function MovieLayout({ children }: Props) {
+  return (
+    <div>
+      <main>{children}</main>
+    </div>
+  );
 }
