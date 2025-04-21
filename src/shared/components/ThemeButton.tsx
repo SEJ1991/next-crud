@@ -34,7 +34,7 @@ export function ThemeButton({ iconClassName, iconSize = '2rem', ...props }: Prop
       return <SpinnerIcon className='animate-spin duration-800' size={iconSize} />;
     }
 
-    const baseIconClassName = 'text-opposite-theme-primary transition-colors duration-300';
+    const baseIconClassName = 'transition-colors duration-300';
     if (theme === 'dark')
       return (
         <MotionMoonIcon
