@@ -1,5 +1,6 @@
 'use client';
 import { getTMDBImgPath, Movie } from '@/domains/movie';
+import { PeopleIcon, StarIcon, TrophyIcon } from '@/shared';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -68,16 +69,16 @@ export function MovieBanner({
             <p className='hidden font-semibold md:block'>Release date: {release_date}</p>
             <ul className='hidden items-center gap-4 md:flex'>
               <li className='flex-center gap-2'>
-                {/* <PeopleIcon className='size-6' />
-              {getShortFormatNumber(vote_count)} */}
+                <PeopleIcon className='size-6' />
+                {/* {getShortFormatNumber(vote_count)} */}
               </li>
               <li className='flex-center gap-1'>
-                {/* <TrophyIcon className='size-6' /> */}
+                <TrophyIcon className='size-6' />
                 {Math.floor(vote_average * 10) / 10}
               </li>
               <li className='flex-center gap-1'>
-                {/* <StarIcon className='size-6' />
-              {getShortFormatNumber(popularity)} */}
+                <StarIcon className='size-6' />
+                {/* {getShortFormatNumber(popularity)} */}
               </li>
             </ul>
             <motion.button
