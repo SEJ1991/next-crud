@@ -13,7 +13,7 @@ export function MovieWidget({ movies, onClick }: Props) {
       className='relative w-50 aspect-[2/3] rounded-md shadow-primary bg-black-primary'
       whileTap={{ scale: 0.95, zIndex: 1 }}
       whileHover={{ scale: 1.2, zIndex: 1 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20, duration: 800 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20, duration: 0.8 }}
       onClick={onClick}
     >
       <ul className='grid grid-cols-3 items-center size-full gap-4 p-4'>

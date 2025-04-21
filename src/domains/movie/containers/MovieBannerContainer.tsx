@@ -1,6 +1,7 @@
 'use client';
 import { getAllMovies, MovieBanner } from '@/domains/movie';
 import { MovieStatus } from '@/domains/movie/types';
+import { SkeletonCardWithContents } from '@/shared';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
@@ -34,7 +35,17 @@ export function MovieBannerContainer({ status = 'all' }: Props) {
   }, []);
 
   const movie = movies?.[selectedIndex];
-  if (isLoading || isError || !movie) return null;
+  if (isLoading || isError || !movie) {
+    return (
+      <SkeletonCardWithContents className='flex flex-col gap-2 justify-center w-full aspect-[16/9] space-y-0 bg-black-primary'>
+        <div className='h-8 w-1/4 mb-4 rounded-md bg-neutral-800' />
+        <div className='h-4 w-1/2 rounded-md bg-neutral-800' />
+        <div className='h-4 w-1/3 rounded-md bg-neutral-800' />
+        <div className='h-4 w-1/4 mb-2 rounded-md bg-neutral-800' />
+        <div className='h-8 w-10 rounded-md bg-neutral-800' />
+      </SkeletonCardWithContents>
+    );
+  }
   return <MovieBanner movie={movie} onClickMore={onClickMore} />;
 }
 
