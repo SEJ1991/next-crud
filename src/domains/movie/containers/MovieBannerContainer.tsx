@@ -1,5 +1,5 @@
 'use client';
-import { getAllMovies } from '@/domains/movie/services/movie';
+import { getAllMovies, MovieBanner } from '@/domains/movie';
 import { MovieStatus } from '@/domains/movie/types';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
@@ -31,7 +31,7 @@ export function MovieBannerContainer({ status = 'all' }: Props) {
 
   const movie = movies?.[selectedIndex];
   if (isLoading || isError || !movie) return null;
-  return <div>MovieBannerContainer</div>;
+  return <MovieBanner movie={movie} />;
 }
 
 function getMovies(status: MovieStatus) {

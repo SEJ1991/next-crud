@@ -28,7 +28,7 @@ export function MovieWidget({ movies, onClick }: Props) {
               type: 'spring',
               stiffness: 300,
               damping: 50,
-              duration: 500,
+              duration: 0.5,
               delay: index * 0.1,
             }}
           >
