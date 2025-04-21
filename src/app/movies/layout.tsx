@@ -5,7 +5,7 @@ interface Props {
 }
 export default function MovieLayout({ children }: Props) {
   return (
-    <div>
+    <div className='bg-black-primary text-white-primary'>
       <MovieHeader />
       <main>{children}</main>
     </div>
