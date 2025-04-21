@@ -1,5 +1,6 @@
 'use client';
 import { MovieNav } from '@/domains/movie';
+import clsx from 'clsx';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { useRef, useState } from 'react';
 
@@ -22,9 +23,10 @@ export function MovieHeader() {
       className='fixed top-0 w-full max-contents-width h-[var(--size-header-height)] flex items-center mx-auto px-[var(--size-page-frame-padding-x)] z-30'
     >
       <div
-        className={`absolute left-0 size-full transition-opacity duration-300 ${
+        className={clsx(
+          'absolute left-0 size-full transition-opacity duration-300',
           isAnimated ? 'opacity-0' : 'opacity-100'
-        }`}
+        )}
         style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0))' }}
       />
       <MovieNav className='z-1' />
