@@ -1,7 +1,6 @@
 'use client';
 import { getTMDBImgPath, Movie } from '@/domains/movie';
-import { OverlayCard } from '@/shared';
-import Image from 'next/image';
+import { ImageWithSkeleton, OverlayCard } from '@/shared';
 import { motion } from 'framer-motion';
 
 interface Props {
@@ -32,7 +31,7 @@ export function MovieWidget({ movies, onClick }: Props) {
               delay: index * 0.1,
             }}
           >
-            <Image
+            <ImageWithSkeleton
               className='size-full rounded-md'
               src={getTMDBImgPath({ path: poster_path ?? '', size: 'w500' })}
               alt={`${title}'s poster image`}

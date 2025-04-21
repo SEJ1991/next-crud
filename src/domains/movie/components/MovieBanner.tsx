@@ -1,8 +1,13 @@
 'use client';
 import { getTMDBImgPath, Movie } from '@/domains/movie';
-import { getShortFormatNumber, PeopleIcon, StarIcon, TrophyIcon } from '@/shared';
+import {
+  getShortFormatNumber,
+  ImageWithSkeleton,
+  PeopleIcon,
+  StarIcon,
+  TrophyIcon,
+} from '@/shared';
 import { AnimatePresence, motion } from 'framer-motion';
-import Image from 'next/image';
 
 interface Props {
   movie: Movie;
@@ -62,15 +67,14 @@ export function MovieBanner({
             transition={{ duration: 0.75, ease: 'easeInOut' }}
             className='absolute inset-0 aspect-[16/9]'
           >
-            <Image
-              className='object-cover'
-              src={getTMDBImgPath({ path: backdrop_path ?? '', size: 'original' })}
+            <ImageWithSkeleton
+              src={backdrop_path ? getTMDBImgPath({ path: backdrop_path, size: 'original' }) : ''}
               alt={`${title}'s backdrop image`}
-              fill
               sizes='100vw'
+              blockSkeleton
               priority
             />
-            <div className='absolute inset-0 bg-gradient-to-b from-black-primary/50 to-black-primary/50 z-10' />
+            <div className='absolute inset-0 bg-gradient-to-b from-black-primary/50 to-black-primary z-10' />
           </motion.div>
         </AnimatePresence>
       </section>

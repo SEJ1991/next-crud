@@ -1,0 +1,46 @@
+'use client';
+import clsx from 'clsx';
+import Image from 'next/image';
+import { ComponentProps, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
+import { AnimatePresence, motion } from 'framer-motion';
+
+interface Props extends ComponentProps<typeof Image> {
+  blockSkeleton?: boolean;
+}
+export function ImageWithSkeleton({ blockSkeleton = false, ...props }: Props) {
+  const [isLoading, setIsLoading] = useState(() => (blockSkeleton ? false : true));
+
+  const handleLoad = () => {
+    if (!isLoading) return;
+    setIsLoading(false);
+  };
+
+  return (
+    <>
+      <AnimatePresence>
+        {!blockSkeleton && (!props.src || isLoading) && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className={twMerge('absolute size-full animate-pulse', props.className)}
+          />
+        )}
+      </AnimatePresence>
+      <Image
+        {...props}
+        className={twMerge(
+          clsx(
+            'absolute size-full object-cover transition-opacity duration-800',
+            isLoading ? 'opacity-0' : 'opacity-100'
+          ),
+          props.className
+        )}
+        fill
+        onLoad={handleLoad}
+      />
+    </>
+  );
+}
