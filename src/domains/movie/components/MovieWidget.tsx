@@ -11,7 +11,7 @@ interface Props {
 export function MovieWidget({ movies, onClick }: Props) {
   return (
     <OverlayCard
-      className='relative w-50 aspect-[2/3] rounded-md shadow-primary overflow-hidden '
+      className='relative w-50 aspect-[2/3] rounded-md shadow-primary bg-black-primary'
       whileTap={{ scale: 0.95, zIndex: 1 }}
       whileHover={{ scale: 1.2, zIndex: 1 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20, duration: 800 }}
@@ -43,7 +43,7 @@ export function MovieWidget({ movies, onClick }: Props) {
         ))}
       </ul>
 
-      <OverlayCard.HoverContents className='absolute bottom-0 w-full p-2 bg-gradient-to-t from-theme-primary/80 to-transparent backdrop-blur-md rounded-b-md'>
+      <OverlayCard.HoverContents className='absolute bottom-0 w-full p-2 bg-gradient-to-t from-black-primary/80 to-transparent backdrop-blur-md rounded-b-md text-white-primary'>
         <div className='flex flex-col gap-2'>
           <h2 className='text-lg font-semibold'>Movies</h2>
           <p className='text-sm'>Discover the latest movies.</p>

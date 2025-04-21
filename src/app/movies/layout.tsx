@@ -1,6 +1,13 @@
+import { MovieHeader } from '@/domains/movie';
+
 interface Props {
   children: React.ReactNode;
 }
-export default function layout({ children }: Props) {
-  return <div>{children}</div>;
+export default function MovieLayout({ children }: Props) {
+  return (
+    <div className='bg-black-primary text-white-primary'>
+      <MovieHeader />
+      <main>{children}</main>
+    </div>
+  );
 }

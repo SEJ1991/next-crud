@@ -1,4 +1,6 @@
 // components
+export * from './components/MovieHeader';
+export * from './components/MovieNav';
 export * from './components/MovieWidget';
 
 // containers
