@@ -1,5 +1,5 @@
 'use client';
-import { NextLink } from '@/shared';
+import { MovieNav } from '@/domains/movie';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { useRef, useState } from 'react';
 
@@ -19,7 +19,7 @@ export function MovieHeader() {
   return (
     <header
       ref={ref}
-      className='fixed top-0 w-full max-contents-width h-[var(--size-header-height)] flex justify-between items-center mx-auto px-[var(--size-page-frame-padding-x)] z-30'
+      className='fixed top-0 w-full max-contents-width h-[var(--size-header-height)] flex items-center mx-auto px-[var(--size-page-frame-padding-x)] z-30'
     >
       <div
         className={`absolute left-0 size-full transition-opacity duration-300 ${
@@ -27,22 +27,7 @@ export function MovieHeader() {
         }`}
         style={{ backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0))' }}
       />
-      <nav className='z-1'>
-        {LINKS.map(({ href, label }) => (
-          <NextLink key={href} href={href}>
-            {label}
-          </NextLink>
-        ))}
-      </nav>
+      <MovieNav className='z-1' />
     </header>
   );
 }
-
-const LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/movies', label: 'All' },
-  { href: '/movies/now-playing', label: 'Now-playing' },
-  { href: '/movies/popular', label: 'Popular' },
-  { href: '/movies/top_rated', label: 'Top-rated' },
-  { href: '/movies/upcoming', label: 'Upcoming' },
-];
