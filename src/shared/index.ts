@@ -12,5 +12,8 @@ export * from './components/NextLink';
 export * from './components/ThemeButton';
 export * from './components/OverlayCard';
 
+// utils
+export * from './utils/number';
+
 // containers
 export * from './containers/Providers';
