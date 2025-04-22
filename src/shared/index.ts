@@ -24,3 +24,6 @@ export * from './utils/number';
 
 // containers
 export * from './containers/Providers';
+
+// hooks
+export * from './hooks/useClickOutside';
