@@ -1,6 +1,6 @@
 import { getTMDBImgPath, Movie, MovieStatus } from '@/domains/movie';
-import { ImageWithSkeleton } from '@/shared';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface Props {
   movies: Movie[];
@@ -21,7 +21,7 @@ export function MovieGridList({ movies, onClickCard, status }: Props) {
           }
 
           return (
-            <ImageWithSkeleton
+            <Image
               className='rounded-md bg-neutral-800'
               src={getTMDBImgPath({ path: poster_path })}
               alt={`${title}'s poster image`}
@@ -31,6 +31,7 @@ export function MovieGridList({ movies, onClickCard, status }: Props) {
                 (min-width: 480px)  23vw
                 30vw, 
             `}
+              fill
             />
           );
         };
