@@ -98,6 +98,6 @@ const ICON_VARIANTS = {
     type: 'spring',
     stiffness: 200,
     damping: 10,
-    duration: 300,
+    duration: 0.3,
   },
 };
