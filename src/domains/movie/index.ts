@@ -2,6 +2,7 @@
 export * from './components/MovieBanner';
 export * from './components/MovieHeader';
 export * from './components/MovieMenu';
+export * from './components/MovieModal';
 export * from './components/MovieNav';
 export * from './components/MovieWidget';
 

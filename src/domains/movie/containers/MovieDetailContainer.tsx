@@ -1,5 +1,5 @@
 'use client';
-import { getMovie } from '@/domains/movie';
+import { getMovie, MovieModal } from '@/domains/movie';
 import { useQuery } from '@tanstack/react-query';
 import { AnimatePresence } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
@@ -45,5 +45,9 @@ export function MovieDetailContainer() {
     }, 1000);
   }, [id]);
 
-  return <AnimatePresence>{id && <div>123123</div>}</AnimatePresence>;
+  return (
+    <AnimatePresence>
+      {id && <MovieModal movie={movie} isLoading={isLoading} onClickClose={handleClickClose} />}
+    </AnimatePresence>
+  );
 }
