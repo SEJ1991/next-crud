@@ -2,6 +2,8 @@
 export * from './axios/instance';
 
 // components
+export * from './components/icons/ArrowDownIcon';
+export * from './components/icons/ArrowUpIcon';
 export * from './components/icons/HomeIcon';
 export * from './components/icons/MoonIcon';
 export * from './components/icons/SpinnerIcon';
