@@ -1,5 +1,6 @@
 // components
 export * from './components/MovieBanner';
+export * from './components/MovieGridList';
 export * from './components/MovieHeader';
 export * from './components/MovieMenu';
 export * from './components/MovieModal';
