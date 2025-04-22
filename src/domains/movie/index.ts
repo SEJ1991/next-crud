@@ -7,6 +7,7 @@ export * from './components/MovieWidget';
 
 // containers
 export * from './containers/MovieBannerContainer';
+export * from './containers/MovieDetailContainer';
 export * from './containers/MovieWidgetContainer';
 
 // services
