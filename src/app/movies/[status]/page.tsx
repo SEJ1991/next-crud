@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import {
   getMoviesByStatus,
+  MovieDetailContainer,
   MovieInfiniteGridListContainer,
   MovieStatusWithoutAll,
 } from '@/domains/movie';
@@ -34,8 +35,31 @@ export default async function MoviesByStatusPage({ params }: Props) {
       <HydrationBoundary state={dehydrate(queryClient)}>
         <MovieInfiniteGridListContainer status={status} />
       </HydrationBoundary>
+      <MovieDetailContainer />
     </section>
   );
+}
+
+export async function generateMetadata({ params }: Props) {
+  const status = (await params).status.replaceAll('-', '_');
+  const pageTitle = status.replaceAll('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+  const title = `${pageTitle} movies | NEXT-CRUD`;
+  const description = `${pageTitle} movies list from TMDB`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      // url: '',
+    },
+    twitter: {
+      title,
+      description,
+      // card: ''
+    },
+  };
 }
 
 const VALID_STATUSES = ['now_playing', 'popular', 'top_rated', 'upcoming'];
