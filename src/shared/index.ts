@@ -13,6 +13,7 @@ export * from './components/icons/PeopleIcon';
 export * from './components/icons/TrophyIcon';
 export * from './components/icons/XIcon';
 export * from './components/ImageWithSkeleton';
+export * from './components/IntersectionPointer';
 export * from './components/LayoutFrame';
 export * from './components/Modal';
 export * from './components/NextLink';
