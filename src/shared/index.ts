@@ -11,6 +11,7 @@ export * from './components/icons/TrophyIcon';
 export * from './components/ImageWithSkeleton';
 export * from './components/NextLink';
 export * from './components/Skeleton';
+export * from './components/SkeletonCardWithContents';
 export * from './components/ThemeButton';
 export * from './components/HoverOverlayCard';
 
