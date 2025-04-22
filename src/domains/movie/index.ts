@@ -1,4 +1,5 @@
 // components
+export * from './components/skeletons/MovieWidgetSkeleton';
 export * from './components/MovieBanner';
 export * from './components/MovieGridList';
 export * from './components/MovieHeader';
