@@ -68,10 +68,6 @@
 }
 
 @layer utilities {
-  .max-contents-width {
-    max-width: var(--size-max-contents-width);
-  }
-
   .scrollbar-hide {
     scrollbar-width: none;
     -ms-overflow-style: none;

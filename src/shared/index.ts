@@ -9,6 +9,7 @@ export * from './components/icons/StarIcon';
 export * from './components/icons/PeopleIcon';
 export * from './components/icons/TrophyIcon';
 export * from './components/ImageWithSkeleton';
+export * from './components/LayoutFrame';
 export * from './components/NextLink';
 export * from './components/Skeleton';
 export * from './components/SkeletonCardWithContents';
