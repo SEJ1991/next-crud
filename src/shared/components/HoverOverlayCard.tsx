@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 
 const HoverContext = createContext({ isHover: false });
 
-export function OverlayCard(props: HTMLMotionProps<'div'>) {
+export function HoverOverlayCard(props: HTMLMotionProps<'div'>) {
   const [isHover, setIsHover] = useState(false);
 
   const handleHoverStart = () => {
@@ -49,4 +49,4 @@ function HoverContents(props: HTMLMotionProps<'div'>) {
   );
 }
 
-OverlayCard.HoverContents = HoverContents;
+HoverOverlayCard.HoverContents = HoverContents;

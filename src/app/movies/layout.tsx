@@ -1,4 +1,5 @@
 import { MovieHeader } from '@/domains/movie';
+import { LayoutFrame } from '@/shared';
 
 interface Props {
   children: React.ReactNode;
@@ -6,8 +7,10 @@ interface Props {
 export default function MovieLayout({ children }: Props) {
   return (
     <div className='bg-black-primary text-white-primary'>
-      <MovieHeader />
-      <main>{children}</main>
+      <LayoutFrame>
+        <MovieHeader />
+        <main>{children}</main>
+      </LayoutFrame>
     </div>
   );
 }

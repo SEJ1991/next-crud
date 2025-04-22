@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
           <div id='portal-root' />
-          <div className='w-full min-h-dvh max-contents-width mx-auto'>{children}</div>
+          {children}
         </Providers>
       </body>
     </html>
