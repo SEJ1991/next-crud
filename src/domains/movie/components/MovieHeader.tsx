@@ -20,7 +20,7 @@ export function MovieHeader() {
   return (
     <header
       ref={ref}
-      className='fixed top-0 w-full max-contents-width h-[var(--size-header-height)] flex items-center mx-auto px-[var(--size-page-frame-padding-x)] z-30'
+      className='fixed top-0 w-full max-w-[var(--size-max-contents-width)] h-[var(--size-header-height)] flex items-center mx-auto px-[var(--size-page-frame-padding-x)] z-30'
     >
       <div
         className={clsx(
