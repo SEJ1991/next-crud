@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 interface Props {
   movie: Movie;
+  onClickMore: (id: number) => () => void;
 }
 export function MovieBanner({
   movie: {
@@ -19,6 +20,7 @@ export function MovieBanner({
     popularity,
     release_date,
   },
+  onClickMore,
 }: Props) {
   const Scores = () => {
     const trophy = {
@@ -101,7 +103,7 @@ export function MovieBanner({
                 className='self-start font-semibold bg-gray-800 rounded-sm text-sm px-1 py-0.5 md:text-base md:px-2 md:py-1.5 md:rounded-md'
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ y: -2 }}
-                // onClick={onClickMore(id)}
+                onClick={onClickMore(id)}
               >
                 More
               </motion.button>

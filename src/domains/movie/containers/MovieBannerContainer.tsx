@@ -19,6 +19,10 @@ export function MovieBannerContainer({ status = 'all' }: Props) {
     select: data => data?.results.slice(0, 5),
   });
 
+  const onClickMore = (id: number) => () => {
+    window.location.hash = encodeURIComponent(`id=${id};`);
+  };
+
   useEffect(() => {
     const inerval = setInterval(() => {
       setSelectedIndex(prev => (prev === 4 ? 0 : prev + 1));
@@ -31,7 +35,7 @@ export function MovieBannerContainer({ status = 'all' }: Props) {
 
   const movie = movies?.[selectedIndex];
   if (isLoading || isError || !movie) return null;
-  return <MovieBanner movie={movie} />;
+  return <MovieBanner movie={movie} onClickMore={onClickMore} />;
 }
 
 function getMovies(status: MovieStatus) {
