@@ -4,6 +4,7 @@ export * from './components/MovieNav';
 export * from './components/MovieWidget';
 
 // containers
+export * from './containers/MovieBannerContainer';
 export * from './containers/MovieWidgetContainer';
 
 // services
