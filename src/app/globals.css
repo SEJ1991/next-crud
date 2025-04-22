@@ -18,6 +18,7 @@
   --color-border-primary: var(--color-gray-primary);
   --color-accent-primary: var(--color-purple-primary);
   --color-shadow-primary: var(--color-gray-primary);
+  --color-skeleton-primary: #e5e5e5;
 
   --size-max-contents-width: 120rem;
   --size-header-height: 3.75rem;
@@ -31,6 +32,7 @@
   --color-text-primary: var(--color-white-primary);
   --color-border-primary: var(--color-dark-gray-primary);
   --color-shadow-primary: var(--color-dark-gray-primary);
+  --color-skeleton-primary: #262626;
 }
 
 @theme {
