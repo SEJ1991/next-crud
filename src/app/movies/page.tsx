@@ -1,4 +1,4 @@
-import { getAllMovies, MovieBannerContainer } from '@/domains/movie';
+import { getAllMovies, MovieBannerContainer, MovieDetailContainer } from '@/domains/movie';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
 export default function MoviesPage() {
@@ -14,6 +14,7 @@ export default function MoviesPage() {
       <HydrationBoundary state={dehydrate(queryClient)}>
         <MovieBannerContainer />
       </HydrationBoundary>
+      <MovieDetailContainer />
     </div>
   );
 }
