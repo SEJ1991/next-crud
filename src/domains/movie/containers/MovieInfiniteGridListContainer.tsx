@@ -1,6 +1,6 @@
 'use client';
 import { MovieGridList } from '@/domains/movie/components/MovieGridList';
-import { getAllMovies } from '@/domains/movie/services/movie';
+import { getAllMovies, getMoviesByStatus } from '@/domains/movie/services/movie';
 import { MovieStatus } from '@/domains/movie/types';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
@@ -31,5 +31,9 @@ export function MovieInfiniteGridListContainer({ status = 'all', limitPages = 10
 }
 
 function getMovies(status: MovieStatus, page: number) {
-  return getAllMovies({ page });
+  if (status === 'all') {
+    return getAllMovies({ page });
+  }
+
+  return getMoviesByStatus({ page }, status);
 }
