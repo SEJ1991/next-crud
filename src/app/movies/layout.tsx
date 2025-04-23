@@ -1,3 +1,5 @@
+import 'swiper/css';
+import 'swiper/css/navigation';
 import { MovieHeader } from '@/domains/movie';
 import { FixedToTopButton, LayoutFrame } from '@/shared';
 
@@ -7,7 +9,7 @@ interface Props {
 export default function MovieLayout({ children }: Props) {
   return (
     <div className='bg-black-primary text-white-primary'>
-      <LayoutFrame>
+      <LayoutFrame className='overflow-hidden'>
         <MovieHeader />
         <main>{children}</main>
         <FixedToTopButton className='bg-black-primary text-white-primary' />

@@ -35,9 +35,9 @@ export default async function MoviesPage() {
         <MovieBannerContainer />
         <div className='relative px-[var(--size-page-frame-padding-x)] pb-[var(--size-page-frame-padding-y)] z-15'>
           {MOVIE_STATUSES.filter(status => status !== 'all').map(status => (
-            <section className='flex flex-col gap-2'>
+            <section key={`swiper-${status}`} className='flex flex-col gap-2'>
               <h2 className='text-4xl'>{status.toUpperCase()}</h2>
-              <MovieSwiperContainer key={`swiper-${status}`} status={status} />
+              <MovieSwiperContainer status={status} />
             </section>
           ))}
           <MovieInfiniteGridListContainer />
