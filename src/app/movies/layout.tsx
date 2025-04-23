@@ -1,5 +1,5 @@
 import { MovieHeader } from '@/domains/movie';
-import { LayoutFrame } from '@/shared';
+import { FixedToTopButton, LayoutFrame } from '@/shared';
 
 interface Props {
   children: React.ReactNode;
@@ -10,6 +10,7 @@ export default function MovieLayout({ children }: Props) {
       <LayoutFrame>
         <MovieHeader />
         <main>{children}</main>
+        <FixedToTopButton className='bg-black-primary text-white-primary' />
       </LayoutFrame>
     </div>
   );
