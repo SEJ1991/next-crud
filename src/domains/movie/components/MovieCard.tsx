@@ -1,33 +1,28 @@
 import React from 'react';
 import { HTMLMotionProps, motion } from 'framer-motion';
 import { getTMDBImgPath, Movie } from '@/domains/movie';
-import Image from 'next/image';
+import { ImageWithSkeleton } from '@/shared';
 
-interface Props extends HTMLMotionProps<'li'> {
+interface Props extends HTMLMotionProps<'div'> {
   movie: Movie;
+  imageSizes?: string;
 }
-function MovieCardComponent({ movie: { poster_path, title }, ...props }: Props) {
+function MovieCardComponent({ movie: { poster_path, title }, imageSizes, ...props }: Props) {
   return (
-    <motion.li {...props} className='relative aspect-[2/3] rounded-md cursor-pointer'>
+    <motion.div {...props} className='relative size-full'>
       {poster_path ? (
-        <Image
-          className='rounded-md bg-neutral-800'
+        <ImageWithSkeleton
+          className='bg-neutral-800'
           src={getTMDBImgPath({ path: poster_path })}
           alt={`${title}'s poster image`}
-          fill
-          sizes={`
-            (min-width: 1024px) 15vw,
-            (min-width: 768px) 18vw,
-            (min-width: 480px) 23vw,
-            30vw
-          `}
+          sizes={imageSizes}
         />
       ) : (
         <div className='absolute inset-0 flex justify-center items-center bg-black/40 p-4'>
           <span className='text-white text-3xl font-semibold truncate'>{title}</span>
         </div>
       )}
-    </motion.li>
+    </motion.div>
   );
 }
 

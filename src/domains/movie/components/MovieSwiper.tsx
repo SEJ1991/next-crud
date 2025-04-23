@@ -1,6 +1,5 @@
 'use client';
-import { getTMDBImgPath, Movie, MovieStatus } from '@/domains/movie';
-import { ImageWithSkeleton } from '@/shared';
+import { Movie, MovieCard, MovieStatus } from '@/domains/movie';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -38,17 +37,20 @@ export function MovieSwiper({ movies, status, initPerView }: Props) {
         navigation
         className='!overflow-visible'
       >
-        {movies.map(({ id, poster_path, title }, index) => (
+        {movies.map((movie, index) => (
           <SwiperSlide
-            key={`${status}-swiper-${id}-${index}`}
-            className='aspect-[2/3] hover:scale-105 hover:z-10 transition-transform duration-300'
+            key={`${status}-swiper-${movie.id}-${index}`}
+            className='aspect-[2/3] hover:scale-105 hover:z-10 transition-transform duration-300 rounded-md overflow-hidden cursor-pointer'
           >
-            <div className='size-full relative rounded-md overflow-hidden'>
-              <ImageWithSkeleton
-                src={poster_path ? getTMDBImgPath({ path: poster_path }) : ''}
-                alt={`${title}'s poster image`}
-              />
-            </div>
+            <MovieCard
+              movie={movie}
+              imageSizes={`
+                (min-width: 1024px) 11vw,
+                (min-width: 768px) 15vw,
+                (min-width: 480px) 23vw,
+                45vw
+            `}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
