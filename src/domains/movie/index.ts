@@ -1,6 +1,7 @@
 // components
 export * from './components/skeletons/MovieBannerSkeleton';
 export * from './components/skeletons/MovieGridListSkeleton';
+export * from './components/skeletons/MovieSwiperSkeleton';
 export * from './components/skeletons/MovieWidgetSkeleton';
 export * from './components/MovieBanner';
 export * from './components/MovieCard';
