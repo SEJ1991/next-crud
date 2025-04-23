@@ -1,5 +1,5 @@
 'use client';
-import { getAllMovies, MovieBanner, MovieBannerSkeleton } from '@/domains/movie';
+import { getMovies, MovieBanner, MovieBannerSkeleton } from '@/domains/movie';
 import { MovieStatus } from '@/domains/movie/types';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
@@ -38,10 +38,4 @@ export function MovieBannerContainer({ status = 'all' }: Props) {
     return <MovieBannerSkeleton />;
   }
   return <MovieBanner movie={movie} onClickMore={onClickMore} />;
-}
-
-function getMovies(status: MovieStatus) {
-  if (status === 'all') {
-    return getAllMovies({ page: 1 });
-  }
 }
