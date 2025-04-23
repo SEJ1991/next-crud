@@ -7,6 +7,7 @@ import {
   MovieInfiniteGridListContainer,
   MovieStatusWithoutAll,
 } from '@/domains/movie';
+import { SectionFrame } from '@/shared';
 
 export const revalidate = 60;
 
@@ -33,15 +34,16 @@ export default async function MoviesByStatusPage({ params }: Props) {
   });
 
   return (
-    <section className='px-[var(--size-page-frame-padding-x)] pb-[var(--size-page-frame-padding-y)] pt-page-frame-with-header-height'>
-      <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6'>
-        {status.replaceAll('_', '-').toUpperCase()}
-      </h1>
+    <SectionFrame
+      className='px-[var(--size-page-frame-padding-x)] pb-[var(--size-page-frame-padding-y)] pt-page-frame-with-header-height'
+      title={status.replaceAll('_', '-').toUpperCase()}
+      headingElement='h1'
+    >
       <HydrationBoundary state={dehydrate(queryClient)}>
         <MovieInfiniteGridListContainer status={status} />
       </HydrationBoundary>
       <MovieDetailContainer />
-    </section>
+    </SectionFrame>
   );
 }
 

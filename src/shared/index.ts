@@ -3,6 +3,7 @@ export * from './axios/instance';
 
 // components
 export * from './components/icons/ArrowDownIcon';
+export * from './components/icons/ArrowForwardIcon';
 export * from './components/icons/ArrowUpIcon';
 export * from './components/icons/HomeIcon';
 export * from './components/icons/MoonIcon';
@@ -19,6 +20,7 @@ export * from './components/LayoutFrame';
 export * from './components/Modal';
 export * from './components/NextLink';
 export * from './components/PortalRoot';
+export * from './components/SectionFrame';
 export * from './components/Skeleton';
 export * from './components/SkeletonCardWithContents';
 export * from './components/ThemeButton';
