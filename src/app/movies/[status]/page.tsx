@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import {
   getMoviesByStatus,
+  MOVIE_STATUSES,
   MovieDetailContainer,
   MovieInfiniteGridListContainer,
   MovieStatusWithoutAll,
@@ -14,7 +15,11 @@ interface Props {
 }
 export default async function MoviesByStatusPage({ params }: Props) {
   const paramStatus = (await params).status.replaceAll('-', '_');
-  if (!VALID_STATUSES.includes(paramStatus as MovieStatusWithoutAll)) {
+  if (
+    !MOVIE_STATUSES.filter(status => status !== 'all').includes(
+      paramStatus as MovieStatusWithoutAll
+    )
+  ) {
     notFound();
   }
 
@@ -61,5 +66,3 @@ export async function generateMetadata({ params }: Props) {
     },
   };
 }
-
-const VALID_STATUSES = ['now_playing', 'popular', 'top_rated', 'upcoming'];
