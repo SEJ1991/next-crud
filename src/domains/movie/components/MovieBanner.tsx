@@ -57,7 +57,7 @@ export function MovieBanner({
   };
   return (
     <>
-      <section className='relative'>
+      <div className='relative'>
         <AnimatePresence>
           <motion.div
             key={id}
@@ -74,11 +74,11 @@ export function MovieBanner({
               blockSkeleton
               priority
             />
-            <div className='absolute inset-0 bg-gradient-to-b from-black-primary/50 to-black-primary z-10' />
+            <div className='absolute inset-0 bg-gradient-to-b from-[rgba(0,0,0,0)] to-black-primary/95 z-10' />
           </motion.div>
         </AnimatePresence>
-      </section>
-      <section className='relative pb-[50%] z-10'>
+      </div>
+      <div className='relative pb-[50%] z-10 sm:pb-[45%] lg:pb-[40%]'>
         <AnimatePresence>
           <motion.div
             key={`banner-info-${id}`}
@@ -86,9 +86,9 @@ export function MovieBanner({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, position: 'absolute' }}
             transition={{ duration: 0.75, ease: 'easeInOut' }}
-            className='absolute inset-0 flex flex-col gap-2 w-full justify-center text-white-primary px-4 py-1 mt-[var(--size-header-height)]'
+            className='absolute inset-0 flex flex-col gap-2 w-full justify-end text-white-primary px-4 py-1 pb-4 mt-[var(--size-header-height)] sm:pb-5 md:pb-6 lg:pb-7'
           >
-            <h2 className='font-semibold text-lg sm:text-xl md:text-5xl lg:text-7xl'>
+            <h2 className='font-semibold text-lg line-clamp-1 sm:text-xl md:text-5xl lg:text-7xl'>
               {title}
 
               {adult && (
@@ -97,7 +97,7 @@ export function MovieBanner({
                 </strong>
               )}
             </h2>
-            <p className='w-full line-clamp-1 text-sm sm:text-base sm:line-clamp-2 md:text-lg md:line-clamp-3 lg:max-w-[80%]'>
+            <p className='w-full line-clamp-1 text-sm sm:text-base sm:line-clamp-2 md:text-lg md:line-clamp-3 lg:max-w-[75%]'>
               {overview}
             </p>
             <p className='hidden font-semibold md:block lg:text-xl'>Release date: {release_date}</p>
@@ -114,7 +114,7 @@ export function MovieBanner({
             </div>
           </motion.div>
         </AnimatePresence>
-      </section>
+      </div>
     </>
   );
 }
