@@ -19,6 +19,10 @@ export function MovieSwiperContainer({ status = 'all' }: Props) {
     select: data => data.results,
   });
 
+  const handleClickCard = (id: number) => () => {
+    window.location.hash = encodeURIComponent(`id=${id};`);
+  };
+
   useEffect(() => {
     if (!mounted) {
       setMounted(true);
@@ -39,5 +43,12 @@ export function MovieSwiperContainer({ status = 'all' }: Props) {
   }, [mounted]);
 
   if (isLoading || isError || !movies || initPerView === 0) return <MovieSwiperSkeleton />;
-  return <MovieSwiper movies={movies} status={status} initPerView={initPerView} />;
+  return (
+    <MovieSwiper
+      movies={movies}
+      status={status}
+      initPerView={initPerView}
+      onClickCard={handleClickCard}
+    />
+  );
 }
