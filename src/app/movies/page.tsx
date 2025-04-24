@@ -7,6 +7,7 @@ import {
   MovieInfiniteGridListContainer,
 } from '@/domains/movie';
 import { MovieSwiperContainer } from '@/domains/movie/containers/MovieSwiperContainer';
+import { SectionFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
 export const revalidate = 60;
@@ -33,14 +34,19 @@ export default async function MoviesPage() {
     <>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <MovieBannerContainer />
-        <div className='relative px-[var(--size-page-frame-padding-x)] pb-[var(--size-page-frame-padding-y)] z-15'>
+        <div className='relative flex flex-col gap-6 px-[var(--size-page-frame-padding-x)] pb-[var(--size-page-frame-padding-y)] z-15'>
           {MOVIE_STATUSES.filter(status => status !== 'all').map(status => (
-            <section key={`swiper-${status}`} className='flex flex-col gap-2'>
-              <h2 className='text-4xl'>{status.toUpperCase()}</h2>
+            <SectionFrame
+              key={`swiper-${status}`}
+              title={status.replaceAll('_', '-').toUpperCase()}
+              href={`/movies/${status.replaceAll('_', '-')}`}
+            >
               <MovieSwiperContainer status={status} />
-            </section>
+            </SectionFrame>
           ))}
-          <MovieInfiniteGridListContainer />
+          <SectionFrame title='ALL' headingElement='h1'>
+            <MovieInfiniteGridListContainer />
+          </SectionFrame>
         </div>
       </HydrationBoundary>
       <MovieDetailContainer />
