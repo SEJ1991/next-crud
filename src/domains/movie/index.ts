@@ -22,6 +22,10 @@ export * from './services/movie';
 
 // utils
 export * from './utils/imagePath';
+export * from './utils/queryOptions';
+
+// constants
+export * from './constants';
 
 // types
 export * from './types';
