@@ -33,7 +33,9 @@ export default async function MoviesPage() {
   return (
     <>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <MovieBannerContainer />
+        <section>
+          <MovieBannerContainer />
+        </section>
         <div className='relative flex flex-col gap-6 px-[var(--size-page-frame-padding-x)] pb-[var(--size-page-frame-padding-y)] z-15'>
           {MOVIE_STATUSES.filter(status => status !== 'all').map(status => (
             <SectionFrame
