@@ -2,6 +2,7 @@
 export * from './axios/instance';
 
 // components
+export * from './components/icons/ArrowBackIcon';
 export * from './components/icons/ArrowDownIcon';
 export * from './components/icons/ArrowForwardIcon';
 export * from './components/icons/ArrowUpIcon';

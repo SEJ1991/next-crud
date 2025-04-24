@@ -2,6 +2,7 @@ import React from 'react';
 import { HTMLMotionProps, motion } from 'framer-motion';
 import { getTMDBImgPath, Movie } from '@/domains/movie';
 import { ImageWithSkeleton } from '@/shared';
+import { twMerge } from 'tailwind-merge';
 
 interface Props extends HTMLMotionProps<'div'> {
   movie: Movie;
@@ -9,7 +10,10 @@ interface Props extends HTMLMotionProps<'div'> {
 }
 function MovieCardComponent({ movie: { poster_path, title }, imageSizes, ...props }: Props) {
   return (
-    <motion.div {...props} className='relative size-full'>
+    <motion.div
+      {...props}
+      className={twMerge('relative size-full overflow-hidden', props.className)}
+    >
       {poster_path ? (
         <ImageWithSkeleton
           className='bg-neutral-800'
