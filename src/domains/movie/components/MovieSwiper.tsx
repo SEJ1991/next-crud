@@ -59,8 +59,8 @@ export function MovieSwiper({ movies, status, initPerView, onClickCard }: Props)
       slidesPerGroup={initPerView}
       breakpoints={{
         360: {
-          slidesPerView: 2,
-          slidesPerGroup: 2,
+          slidesPerView: 3,
+          slidesPerGroup: 3,
         },
         480: {
           slidesPerView: 4,
