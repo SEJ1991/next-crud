@@ -1,4 +1,5 @@
 'use client';
+import { MovieGridList } from '@/domains/movie/components/MovieGridList';
 import { getAllMovies } from '@/domains/movie/services/movie';
 import { MovieStatus } from '@/domains/movie/types';
 import { useInfiniteQuery } from '@tanstack/react-query';
@@ -20,9 +21,13 @@ export function MovieInfiniteGridListContainer({ status = 'all', limitPages = 10
     initialPageParam: 1,
   });
 
+  const handleClickCard = (id: number) => () => {
+    window.location.hash = encodeURIComponent(`id=${id};`);
+  };
+
   const movies = data?.pages.map(page => page.results).flat() ?? [];
   if (isLoading || isError || movies.length === 0) return <div>로딩</div>;
-  return <div>MovieGridListContainer</div>;
+  return <MovieGridList movies={movies} status={status} onClickCard={handleClickCard} />;
 }
 
 function getMovies(status: MovieStatus, page: number) {

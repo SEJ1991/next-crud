@@ -71,6 +71,7 @@ export function MovieModal({ movie, isLoading, onClickClose }: Props) {
       <div>
         <div className='w-full relative aspect-[16/9]'>
           <ImageWithSkeleton
+            className='bg-neutral-800'
             src={backdrop_path ? getTMDBImgPath({ path: backdrop_path, size: 'original' }) : ''}
             alt={`${title}'s poster image`}
           />
