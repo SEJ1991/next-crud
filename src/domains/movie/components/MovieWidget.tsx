@@ -1,13 +1,19 @@
 'use client';
 import { getTMDBImgPath, Movie } from '@/domains/movie';
 import { ImageWithSkeleton, HoverOverlayCard } from '@/shared';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 interface Props {
   movies: Movie[];
   onClick: () => void;
 }
 export function MovieWidget({ movies, onClick }: Props) {
+  const [isHover, setIsHover] = useState(false);
+
+  const handleChangeHover = (param: boolean) => {
+    setIsHover(param);
+  };
   return (
     <HoverOverlayCard
       className='relative w-50 aspect-[2/3] rounded-md shadow-primary bg-black-primary'
@@ -15,7 +21,20 @@ export function MovieWidget({ movies, onClick }: Props) {
       whileHover={{ scale: 1.2, zIndex: 1 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20, duration: 0.8 }}
       onClick={onClick}
+      onChangeHover={handleChangeHover}
     >
+      <AnimatePresence>
+        {!isHover && (
+          <motion.h2
+            className='absolute bottom-6 -left-14 rotate-270 text-2xl'
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+          >
+            /movies
+          </motion.h2>
+        )}
+      </AnimatePresence>
       <ul className='grid grid-cols-3 items-center size-full gap-4 p-4'>
         {movies.map(({ id, title, poster_path }, index) => (
           <motion.li
