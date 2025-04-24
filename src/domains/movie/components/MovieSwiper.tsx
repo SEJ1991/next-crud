@@ -47,9 +47,9 @@ export function MovieSwiper({ movies, status, initPerView, onClickCard }: Props)
         renderCustom: (_, current, total) => {
           const pages = Array.from({ length: total }).map(
             (_, index) =>
-              `<div class="w-3.5 h-0.5 ${
+              `<div class="hidden w-3.5 h-0.5 ${
                 current - 1 === index ? 'bg-gray-300' : 'bg-gray-300/30'
-              }"></div>`
+              } sm:block"></div>`
           );
           return pages.join('');
         },
