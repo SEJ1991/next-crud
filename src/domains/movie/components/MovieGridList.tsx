@@ -1,6 +1,5 @@
-import { getTMDBImgPath, Movie, MovieCard, MovieStatus } from '@/domains/movie';
+import { Movie, MovieCard, MovieStatus } from '@/domains/movie';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 interface Props {
   movies: Movie[];
@@ -11,8 +10,9 @@ export function MovieGridList({ movies, onClickCard, status }: Props) {
   return (
     <ul className='grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6'>
       {movies.map((movie, index) => (
-        <MovieCard
+        <motion.li
           key={`${status}-grid-${movie.id}-${index}`}
+          className='aspect-[2/3] rounded-md overflow-hidden cursor-pointer'
           initial={{ opacity: 0, y: 10 }}
           animate={{
             opacity: 1,
@@ -37,9 +37,18 @@ export function MovieGridList({ movies, onClickCard, status }: Props) {
               stiffness: 200,
             },
           }}
-          movie={movie}
-          onClick={onClickCard(movie.id)}
-        />
+        >
+          <MovieCard
+            movie={movie}
+            onClick={onClickCard(movie.id)}
+            imageSizes={`
+              (min-width: 1024px) 15vw,
+              (min-width: 768px) 18vw,
+              (min-width: 480px) 23vw,
+              30vw
+          `}
+          />
+        </motion.li>
       ))}
     </ul>
   );
