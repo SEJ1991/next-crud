@@ -18,11 +18,12 @@ export function SectionFrame({ title, href, headingElement = 'h2', ...props }: P
   const Title = () => {
     if (!title) return null;
 
-    const titleClassName = 'text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-6';
+    const titleClassName = 'text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-2';
     if (href) {
       return (
-        <NextLink className={`inline-flex items-center gap-1 ${titleClassName} group`} href={href}>
-          {title} <ArrowForwardIcon className='size-8 group-hover:animate-pulse' />
+        <NextLink className={`inline-flex items-center ${titleClassName} group`} href={href}>
+          {title}
+          <ArrowForwardIcon className='size-5 sm:size-6 md:size-7 lg:size-8 group-hover:animate-pulse' />
         </NextLink>
       );
     }
