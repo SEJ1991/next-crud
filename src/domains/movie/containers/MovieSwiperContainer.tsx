@@ -1,5 +1,5 @@
 'use client';
-import { getMovies, MovieStatus, MovieSwiper } from '@/domains/movie';
+import { getMovies, MovieStatus, MovieSwiper, MovieSwiperSkeleton } from '@/domains/movie';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
@@ -38,6 +38,6 @@ export function MovieSwiperContainer({ status = 'all' }: Props) {
     setInitPerView(perView);
   }, [mounted]);
 
-  if (isLoading || isError || !movies || initPerView === 0) return <div>로딩</div>;
+  if (isLoading || isError || !movies || initPerView === 0) return <MovieSwiperSkeleton />;
   return <MovieSwiper movies={movies} status={status} initPerView={initPerView} />;
 }
