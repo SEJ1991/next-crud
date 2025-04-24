@@ -1,5 +1,11 @@
 'use client';
-import { MovieGridList, getAllMovies, getMoviesByStatus, MovieStatus } from '@/domains/movie';
+import {
+  MovieGridList,
+  getAllMovies,
+  getMoviesByStatus,
+  MovieStatus,
+  MovieGridListSkeleton,
+} from '@/domains/movie';
 import { IntersectionPointer } from '@/shared';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useInView } from 'framer-motion';
@@ -35,7 +41,7 @@ export function MovieInfiniteGridListContainer({ status = 'all', limitPages = 10
   }, [isInView]);
 
   const movies = data?.pages.map(page => page.results).flat() ?? [];
-  if (isLoading || isError || movies.length === 0) return <div>로딩</div>;
+  if (isLoading || isError || movies.length === 0) return <MovieGridListSkeleton />;
   return (
     <>
       <MovieGridList movies={movies} status={status} onClickCard={handleClickCard} />

@@ -38,8 +38,8 @@ export function MovieGridList({ movies, onClickCard, status }: Props) {
 
         return (
           <motion.li
-            key={`${status}-grid-${id}_${index}`}
-            className='relative aspect-[2/3] rounded-md opacity-0 cursor-pointer'
+            key={`${status}-grid-${id}-${index}`}
+            className='relative aspect-[2/3] rounded-md cursor-pointer'
             initial={{ opacity: 0, y: 10 }}
             animate={{
               opacity: 1,
