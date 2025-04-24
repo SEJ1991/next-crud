@@ -7,8 +7,9 @@ interface Props {
   movies: Movie[];
   status: MovieStatus;
   initPerView: number;
+  onClickCard: (id: number) => () => void;
 }
-export function MovieSwiper({ movies, status, initPerView }: Props) {
+export function MovieSwiper({ movies, status, initPerView, onClickCard }: Props) {
   return (
     <div className='relative w-full'>
       <Swiper
@@ -44,6 +45,7 @@ export function MovieSwiper({ movies, status, initPerView }: Props) {
           >
             <MovieCard
               movie={movie}
+              onClick={onClickCard(movie.id)}
               imageSizes={`
                 (min-width: 1024px) 11vw,
                 (min-width: 768px) 15vw,
