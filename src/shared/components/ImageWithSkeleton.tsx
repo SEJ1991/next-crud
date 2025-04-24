@@ -26,7 +26,7 @@ export function ImageWithSkeleton({ blockSkeleton = false, ...props }: Props) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={twMerge('absolute size-full', props.className)}
+            className={twMerge('absolute', props.className)}
           />
         )}
       </AnimatePresence>

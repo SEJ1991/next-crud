@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'NEXT-CRUD | HOME',
+  title: 'HOME | NEXT-CRUD',
   description: 'reference website for nextjs crud',
 };
 

@@ -12,7 +12,7 @@ export function MovieHeader() {
   const menuRef = useClickOutside<HTMLDivElement>(() => setIsOpenMenu(false));
   const { scrollY } = useScroll();
 
-  const [isAnimated, setIsAnimated] = useState(false);
+  const [isScroll, setIsScroll] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const handleClickHome = () => {
@@ -25,10 +25,10 @@ export function MovieHeader() {
 
   useMotionValueEvent(scrollY, 'change', latest => {
     const headerHeight = ref.current?.offsetHeight ?? 0;
-    const isWillBeAnimated = latest >= headerHeight;
+    const isWillBeScroll = latest >= headerHeight;
 
-    if (isWillBeAnimated === isAnimated) return;
-    setIsAnimated(isWillBeAnimated);
+    if (isWillBeScroll === isScroll) return;
+    setIsScroll(isWillBeScroll);
   });
 
   useEffect(() => {
@@ -51,8 +51,8 @@ export function MovieHeader() {
     >
       <div
         className={clsx(
-          'absolute left-0 size-full transition-opacity duration-300 bg-gradient-to-b from-black-primary to-[rgba(0,0,0,0)]',
-          isAnimated ? 'opacity-0' : 'opacity-100'
+          'absolute left-0 size-full transition-colors duration-200 bg-gradient-to-b from-black-primary',
+          isScroll ? 'to-black-primary' : 'to-[rgba(0,0,0,0)]'
         )}
       />
       <button className='z-1' onClick={handleClickHome}>

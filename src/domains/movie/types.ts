@@ -1,4 +1,5 @@
 export type MovieStatus = 'all' | 'now_playing' | 'popular' | 'top_rated' | 'upcoming';
+export type MovieStatusWithoutAll = Exclude<MovieStatus, 'all'>;
 
 export interface Movie {
   adult: boolean;

@@ -5,7 +5,10 @@ export function Skeleton(props: HTMLMotionProps<'div'>) {
   return (
     <motion.div
       {...props}
-      className={twMerge('animate-pulse bg-[var(--color-skeleton-primary)]', props.className)}
+      className={twMerge(
+        'size-full animate-pulse bg-[var(--color-skeleton-primary)]',
+        props.className
+      )}
     />
   );
 }
