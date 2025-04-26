@@ -10,7 +10,7 @@ export function PageFrame(props: ComponentPropsWithoutRef<'div'>) {
         props.className
       )}
     >
-      PageFrame
+      {props.children}
     </div>
   );
 }
