@@ -21,8 +21,9 @@ export function ProductNavContainer() {
     refetch();
   };
 
-  if (isLoading || isError || isRefetching || isRefetchError || !categories)
+  if (isLoading || isError || isRefetching || isRefetchError || !categories) {
     return <ProductNavSkeleton onClickRefresh={handleClickRefresh} />;
+  }
   return (
     <ProductNav
       links={[{ href: '/products', label: 'All' }].concat(categories)}

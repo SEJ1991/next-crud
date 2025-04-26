@@ -18,7 +18,7 @@ export default async function ProductLayout({ children }: Props) {
 
   return (
     <LayoutFrame className='flex'>
-      <aside className='hidden flex-col gap-4 w-[var(--size-left-sidebar-width)] h-dvh px-[var(--size-page-frame-padding-x)] py-[var(--size-page-frame-padding-y)] border-r border-border-primary md:flex'>
+      <aside className='hidden flex-col gap-4 w-[var(--size-left-sidebar-width)] h-dvh overflow-y-auto px-[var(--size-page-frame-padding-x)] py-[var(--size-page-frame-padding-y)] border-r border-border-primary md:flex'>
         <ul className='flex items-center gap-4'>
           <li>
             <HomeButton className='size-7.5' />
