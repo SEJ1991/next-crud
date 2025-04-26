@@ -12,6 +12,7 @@ export * from './components/icons/SpinnerIcon';
 export * from './components/icons/SunIcon';
 export * from './components/icons/StarIcon';
 export * from './components/icons/PeopleIcon';
+export * from './components/icons/RefreshIcon';
 export * from './components/icons/TrophyIcon';
 export * from './components/icons/XIcon';
 export * from './components/FixedToTopButton';
