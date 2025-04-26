@@ -1,4 +1,4 @@
-import { getAllProducts, ProductsContainer } from '@/domains/product';
+import { getAllProducts, ProductGridListContainer } from '@/domains/product';
 import { PageFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
@@ -19,7 +19,7 @@ export default async function ProductsPage({ searchParams }: Props) {
       <h1 className='text-4xl font-semibold'>All products</h1>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <section>
-          <ProductsContainer skip={skip} />
+          <ProductGridListContainer skip={skip} />
         </section>
       </HydrationBoundary>
     </PageFrame>
@@ -27,6 +27,6 @@ export default async function ProductsPage({ searchParams }: Props) {
 }
 
 function getSkip(skipParam?: string) {
-  if (!skipParam || isNaN(Number(skipParam))) return 1;
+  if (!skipParam || isNaN(Number(skipParam))) return 0;
   return Number(skipParam);
 }

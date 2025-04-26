@@ -3,8 +3,8 @@ export * from './components/skeletons/ProductNavSkeleton';
 export * from './components/ProductNav';
 
 // containers
+export * from './containers/ProductGridListContainer';
 export * from './containers/ProductNavContainer';
-export * from './containers/ProductsContainer';
 
 // services
 export * from './services/product';
