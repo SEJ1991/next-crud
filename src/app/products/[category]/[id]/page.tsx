@@ -1,3 +1,5 @@
+import { PageFrame } from '@/shared';
+
 export default function ProductPage() {
-  return <div>page</div>;
+  return <PageFrame>page</PageFrame>;
 }
