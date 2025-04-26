@@ -1,5 +1,5 @@
 'use client';
-import { ProductNav } from '@/domains/product';
+import { ProductNav, ProductNavSkeleton } from '@/domains/product';
 import { getCategories } from '@/domains/product';
 import { useQuery } from '@tanstack/react-query';
 
@@ -21,7 +21,8 @@ export function ProductNavContainer() {
     refetch();
   };
 
-  if (isLoading || isError || isRefetching || isRefetchError || !categories) return <div>로딩</div>;
+  if (isLoading || isError || isRefetching || isRefetchError || !categories)
+    return <ProductNavSkeleton onClickRefresh={handleClickRefresh} />;
   return (
     <ProductNav
       links={[{ href: '/products', label: 'All' }].concat(categories)}
