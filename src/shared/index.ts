@@ -15,6 +15,7 @@ export * from './components/icons/PeopleIcon';
 export * from './components/icons/TrophyIcon';
 export * from './components/icons/XIcon';
 export * from './components/FixedToTopButton';
+export * from './components/HomeButton';
 export * from './components/ImageWithSkeleton';
 export * from './components/IntersectionPointer';
 export * from './components/LayoutFrame';
