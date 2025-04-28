@@ -7,7 +7,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
   nowPage: number;
   pages: number[];
   lastPage: number;
-  onClickPage: (id: number) => () => void;
+  onClickPage: (page: number) => () => void;
 }
 export function Pagination({ nowPage, pages, lastPage, onClickPage, ...props }: Props) {
   const firstPageNumber = pages[0];
@@ -59,9 +59,10 @@ function ArrowButton({ isActive, ...props }: ArrowButtonProps) {
     <button
       {...props}
       className={clsx(
-        'size-6 opacity-0 transition-opacity duration-500',
-        isActive && 'opacity-100'
+        'size-6 opacity-20 transition-opacity duration-500 cursor-default',
+        isActive && 'opacity-100 cursor-pointer'
       )}
+      disabled={!isActive}
     >
       {props.children}
     </button>
