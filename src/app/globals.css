@@ -85,4 +85,8 @@
   .shadow-primary {
     box-shadow: 0 0 15px 1px var(--color-shadow-primary);
   }
+
+  .shadow-secondary {
+    box-shadow: 0 0 8px 1px var(--color-shadow-primary);
+  }
 }

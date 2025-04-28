@@ -16,7 +16,7 @@ export default async function ProductsPage({ searchParams }: Props) {
 
   return (
     <PageFrame className='flex flex-col gap-2'>
-      <h1 className='text-4xl font-semibold'>All products</h1>
+      <h1 className='text-4xl font-semibold mb-4'>All products</h1>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <section>
           <ProductGridListContainer skip={skip} />
