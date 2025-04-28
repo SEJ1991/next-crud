@@ -1,5 +1,11 @@
 'use client';
-import { ProductGridList, ProductPagination, getAllProducts, getSkip } from '@/domains/product';
+import {
+  ProductGridList,
+  ProductGridListSkeleton,
+  ProductPagination,
+  getAllProducts,
+  getSkip,
+} from '@/domains/product';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -22,13 +28,18 @@ export function ProductGridListContainer({ category = 'all', page }: Props) {
     router.push(`?${params.toString()}`);
   };
 
-  if (isLoading || isError || !data) return <div>로딩</div>;
-  const { products, skip, total } = data;
-
   return (
     <>
-      <ProductGridList products={products} />
-      <ProductPagination skip={skip} total={total} onClickPage={handleClickPage} />
+      {isLoading || isError || !data ? (
+        <ProductGridListSkeleton />
+      ) : (
+        <ProductGridList products={data.products} />
+      )}
+      <ProductPagination
+        skip={data?.skip ?? 0}
+        total={data?.total ?? 0}
+        onClickPage={handleClickPage}
+      />
     </>
   );
 }
