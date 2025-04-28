@@ -39,6 +39,8 @@ export default async function ProductsPage({ searchParams }: Props) {
   await queryClient.prefetchQuery({
     queryKey: ['products', 'all', page],
     queryFn: () => getAllProducts({ skip: getSkip(page) }),
+    gcTime: 0,
+    staleTime: 0,
   });
 
   return (

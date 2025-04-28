@@ -15,6 +15,8 @@ export default async function ProductsByCategoryPage({ params, searchParams }: P
   await queryClient.prefetchQuery({
     queryKey: ['products', category, page],
     queryFn: () => getProductsByCategory({ skip: getSkip(page) }, category),
+    gcTime: 0,
+    staleTime: 0,
   });
 
   return (
