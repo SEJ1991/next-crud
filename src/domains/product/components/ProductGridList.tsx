@@ -18,7 +18,16 @@ export function ProductGridList({ products }: Props) {
               <StarIcon className='size-4 text-amber-200' />
               {rating}
             </div>
-            <ImageWithSkeleton src={thumbnail} alt={`${title}'s thumbnail`} />
+            <ImageWithSkeleton
+              src={thumbnail}
+              alt={`${title}'s thumbnail`}
+              sizes={`
+              (min-width: 1024px) 15vw,
+              (min-width: 768px) 18vw,
+              (min-width: 480px) 30vw,
+              43vw
+          `}
+            />
           </div>
           <dl className='text-center'>
             <dt className='line-clamp-2'>{title}</dt>
