@@ -2,6 +2,7 @@ import { getAllProducts, getSkip, ProductGridListContainer } from '@/domains/pro
 import { PageFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
+export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'All products | NEXT-CRUD',
   description: 'Browse products by various categories.',
