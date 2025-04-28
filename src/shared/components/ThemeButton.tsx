@@ -5,17 +5,7 @@ import { useTheme } from 'next-themes';
 import { MoonIcon, SpinnerIcon, SunIcon } from '@/shared';
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 
-interface Props extends HTMLMotionProps<'button'> {
-  iconClassName?: string;
-  iconSize?: string;
-}
-/**
- * 다크/라이트 모드 스위칭 버튼
- *
- * @property {string | undefined} iconClassName
- * @property {string | undefined} iconSize react-icons 사이즈 (기본값: 2rem)
- */
-export function ThemeButton({ iconClassName, iconSize = '2rem', ...props }: Props) {
+export function ThemeButton(props: HTMLMotionProps<'button'>) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -31,10 +21,9 @@ export function ThemeButton({ iconClassName, iconSize = '2rem', ...props }: Prop
 
   const Icon = () => {
     if (!mounted) {
-      return <SpinnerIcon className='size-full animate-spin duration-800' size={iconSize} />;
+      return <SpinnerIcon className='size-full animate-spin duration-800' />;
     }
 
-    const baseIconClassName = 'size-full';
     if (theme === 'dark')
       return (
         <MotionMoonIcon
@@ -42,8 +31,7 @@ export function ThemeButton({ iconClassName, iconSize = '2rem', ...props }: Prop
           initial='initial'
           animate='animate'
           exit='exit'
-          className={twMerge(baseIconClassName, iconClassName)}
-          size={iconSize}
+          className='size-full'
         />
       );
     return (
@@ -52,8 +40,7 @@ export function ThemeButton({ iconClassName, iconSize = '2rem', ...props }: Prop
         initial='initial'
         animate='animate'
         exit='exit'
-        className={twMerge(baseIconClassName, iconClassName)}
-        size={iconSize}
+        className='size-full'
       />
     );
   };
@@ -69,6 +56,7 @@ export function ThemeButton({ iconClassName, iconSize = '2rem', ...props }: Prop
       }}
       transition={{ type: 'spring', stiffness: 200, damping: 10 }}
       {...props}
+      className={twMerge('size-6 md:size-8', props.className)}
       onClick={handleClick}
     >
       <AnimatePresence>

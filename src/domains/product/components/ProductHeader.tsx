@@ -48,7 +48,7 @@ export function ProductHeader(props: ComponentPropsWithoutRef<'header'>) {
           </button>
           <HomeButton className='size-7.5' />
         </div>
-        <ThemeButton className='size-8' />
+        <ThemeButton />
       </header>
       <AnimatePresence>
         {isNavOpen && (
@@ -63,7 +63,7 @@ export function ProductHeader(props: ComponentPropsWithoutRef<'header'>) {
                 stiffness: 300,
                 damping: 25,
               }}
-              className='px-8 py-12 rounded-md'
+              className='w-56 px-8 py-12 rounded-md'
             >
               <Modal.CloseButton className='top-2 right-2' />
               <div className='max-h-100 overflow-y-scroll'>{props.children}</div>
