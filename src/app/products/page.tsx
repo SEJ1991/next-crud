@@ -1,4 +1,4 @@
-import { getAllProducts, ProductGridListContainer } from '@/domains/product';
+import { getAllProducts, getSkip, ProductGridListContainer } from '@/domains/product';
 import { PageFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
@@ -6,12 +6,12 @@ interface Props {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }
 export default async function ProductsPage({ searchParams }: Props) {
-  const skip = getSkip((await searchParams).skip);
+  const page = getPageParam((await searchParams).page);
 
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ['products', 'all', skip],
-    queryFn: () => getAllProducts({ skip }),
+    queryKey: ['products', 'all', page],
+    queryFn: () => getAllProducts({ skip: getSkip(page) }),
   });
 
   return (
@@ -19,14 +19,14 @@ export default async function ProductsPage({ searchParams }: Props) {
       <h1 className='text-4xl font-semibold mb-4'>All products</h1>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <section>
-          <ProductGridListContainer skip={skip} />
+          <ProductGridListContainer page={page} />
         </section>
       </HydrationBoundary>
     </PageFrame>
   );
 }
 
-function getSkip(skipParam?: string) {
-  if (!skipParam || isNaN(Number(skipParam))) return 0;
-  return Number(skipParam);
+function getPageParam(pageParam?: string) {
+  if (!pageParam || isNaN(Number(pageParam))) return 1;
+  return Number(pageParam);
 }
