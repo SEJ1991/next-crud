@@ -6,6 +6,7 @@ interface Props {
   products: Product[];
 }
 export function ProductGridList({ products }: Props) {
+  if (products.length === 0) return <h2>No products available.</h2>;
   return (
     <ul className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-6'>
       {products.map(({ id, title, price, discountPercentage, thumbnail, stock, rating }) => (

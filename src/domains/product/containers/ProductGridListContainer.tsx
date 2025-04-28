@@ -3,7 +3,9 @@ import {
   ProductGridList,
   ProductGridListSkeleton,
   ProductPagination,
+  ProductsResponse,
   getAllProducts,
+  getProductsByCategory,
   getSkip,
 } from '@/domains/product';
 import { useQuery } from '@tanstack/react-query';
@@ -19,7 +21,7 @@ export function ProductGridListContainer({ category = 'all', page }: Props) {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['products', category, page],
-    queryFn: () => getAllProducts({ skip: getSkip(page) }),
+    queryFn: () => getProducts(category, page),
   });
 
   const handleClickPage = (page: number) => () => {
@@ -29,15 +31,25 @@ export function ProductGridListContainer({ category = 'all', page }: Props) {
   };
 
   if (isLoading || isError || !data) return <ProductGridListSkeleton />;
-
   return (
     <>
       <ProductGridList products={data.products} />
-      <ProductPagination
-        skip={data?.skip ?? 0}
-        total={data?.total ?? 0}
-        onClickPage={handleClickPage}
-      />
+      {data.products.length > 0 && (
+        <ProductPagination
+          skip={data?.skip ?? 0}
+          total={data?.total ?? 0}
+          onClickPage={handleClickPage}
+        />
+      )}
     </>
   );
+}
+
+function getProducts(category: string, page: number): Promise<ProductsResponse> {
+  const skip = getSkip(page);
+  if (category === 'all') {
+    return getAllProducts({ skip });
+  }
+
+  return getProductsByCategory({ skip }, category);
 }
