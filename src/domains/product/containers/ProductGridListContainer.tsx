@@ -23,9 +23,13 @@ export function ProductGridListContainer({ category = 'all', page }: Props) {
     queryKey: ['products', category, page],
     queryFn: () => getProducts(category, page),
     gcTime: 0,
-    staleTime: 60000,
+    staleTime: 1000 * 60,
     placeholderData: prevData => prevData,
   });
+
+  const handleClickCard = (id: number, itemCategory: string) => () => {
+    router.push(`/products/${itemCategory}/${id}`);
+  };
 
   const handleClickPage = (page: number) => () => {
     const params = new URLSearchParams(searchParams);
@@ -36,7 +40,7 @@ export function ProductGridListContainer({ category = 'all', page }: Props) {
   if (isLoading || isError || !data) return <ProductGridListSkeleton />;
   return (
     <>
-      <ProductGridList products={data.products} />
+      <ProductGridList products={data.products} onClickCard={handleClickCard} />
       {data.products.length > 0 && (
         <ProductPagination
           skip={data?.skip ?? 0}
