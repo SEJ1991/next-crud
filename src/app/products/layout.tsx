@@ -1,5 +1,5 @@
-import { ProductNavContainer, getCategories } from '@/domains/product';
-import { LayoutFrame, ThemeButton } from '@/shared';
+import { ProductHeader, ProductNavContainer, getCategories } from '@/domains/product';
+import { FixedToTopButton, LayoutFrame, ThemeButton } from '@/shared';
 import React from 'react';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { HomeButton } from '@/shared/components/HomeButton';
@@ -18,21 +18,26 @@ export default async function ProductLayout({ children }: Props) {
 
   return (
     <LayoutFrame className='md:pl-[var(--size-left-sidebar-width)]'>
+      <ProductHeader>
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <ProductNavContainer />
+        </HydrationBoundary>
+      </ProductHeader>
+
       <aside
-        className='fixed top-0 left-0 hidden flex-col shrink-0 gap-4 w-[var(--size-left-sidebar-width)] h-dvh px-[var(--size-page-frame-padding-x)] py-[var(--size-page-frame-padding-y)]   
-      border-r border-border-primary overflow-y-auto md:flex'
+        className='fixed top-0 left-0 hidden flex-col shrink-0 gap-4 w-[var(--size-left-sidebar-width)] h-dvh 
+        px-[var(--size-page-frame-padding-x)] py-[var(--size-page-frame-padding-y)] border-r border-border-primary overflow-y-auto md:flex'
       >
         <div className='flex items-center gap-4'>
           <HomeButton className='size-7.5' />
           <ThemeButton />
         </div>
-        <section>
-          <HydrationBoundary state={dehydrate(queryClient)}>
-            <ProductNavContainer />
-          </HydrationBoundary>
-        </section>
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <ProductNavContainer />
+        </HydrationBoundary>
       </aside>
 
+      <FixedToTopButton className='bottom-25 md:bottom-10' />
       <main>{children}</main>
     </LayoutFrame>
   );
