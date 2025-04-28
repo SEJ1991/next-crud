@@ -28,13 +28,11 @@ export function ProductGridListContainer({ category = 'all', page }: Props) {
     router.push(`?${params.toString()}`);
   };
 
+  if (isLoading || isError || !data) return <ProductGridListSkeleton />;
+
   return (
     <>
-      {isLoading || isError || !data ? (
-        <ProductGridListSkeleton />
-      ) : (
-        <ProductGridList products={data.products} />
-      )}
+      <ProductGridList products={data.products} />
       <ProductPagination
         skip={data?.skip ?? 0}
         total={data?.total ?? 0}
