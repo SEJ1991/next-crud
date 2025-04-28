@@ -1,6 +1,12 @@
-import { getProductsByCategory, getSkip, ProductGridListContainer } from '@/domains/product';
+import {
+  getCategories,
+  getProductsByCategory,
+  getSkip,
+  ProductGridListContainer,
+} from '@/domains/product';
 import { PageFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 interface Props {
@@ -10,6 +16,11 @@ interface Props {
 export default async function ProductsByCategoryPage({ params, searchParams }: Props) {
   const category = (await params).category;
   const page = getPageParam((await searchParams).page);
+
+  const categories = await getCategories();
+  if (!categories.map(item => item.slug).includes(category)) {
+    notFound();
+  }
 
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
