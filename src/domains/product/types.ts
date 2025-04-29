@@ -49,6 +49,10 @@ export interface Product {
   thumbnail: string;
 }
 
+export interface ProductDetail extends Product {
+  brand: string;
+}
+
 // api interface
 export interface ProductsRequest {
   skip: number;
