@@ -48,10 +48,10 @@ export function ProductDetail({
 
   const isDiscount = discountPercentage > 0;
   return (
-    <div className='flex flex-col gap-16 w-[80%]'>
+    <div className='flex flex-col gap-16 lg:w-[80%]'>
       <h1 className='text-4xl font-semibold'>{title}</h1>
       <section className='flex flex-col'>
-        <div className='flex gap-2'>
+        <div className='flex flex-col items-center gap-6 lg:flex-row lg:items-stretch'>
           <div>
             <div className='relative aspect-square size-80 rounded-md mx-auto mb-2 overflow-hidden'>
               <ProductRatingBadge rating={rating} />
@@ -93,10 +93,10 @@ export function ProductDetail({
               ))}
             </ul>
           </div>
-          <div className='flex flex-col justify-between gap-4'>
+          <div className='flex flex-col justify-between gap-4 w-[80%]'>
             <dl className='flex flex-col gap-1'>
               <dt className='text-3xl'>
-                {title} <span className='text-lg text-gray-500'>({brand})</span>
+                {title} {brand && <span className='text-lg text-gray-500'>({brand})</span>}
               </dt>
               <dd>category: {category}</dd>
               <dd>description: {description}</dd>
