@@ -1,5 +1,10 @@
+import { Searchbar } from '@/shared';
 import React from 'react';
 
 export default function ProductsPage() {
-  return <div>123213</div>;
+  return (
+    <div className='m-4'>
+      <Searchbar />
+    </div>
+  );
 }
