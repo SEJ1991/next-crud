@@ -12,13 +12,13 @@ export function Searchbar(props: ComponentPropsWithoutRef<'form'>) {
     <form
       {...props}
       className={twMerge(
-        'flex border border-border-primary rounded-md overflow-hidden',
+        'inline-flex border border-border-primary rounded-md overflow-hidden',
         props.className
       )}
     >
       <input type='text' className='p-2' onChange={handleChange} value={input} />
-      <button type='submit' className='border-l border-border-primary'>
-        <SearchIcon className='size-10 p-2' />
+      <button type='submit' className='size-10 p-2 border-l border-border-primary'>
+        <SearchIcon className='size-full' />
       </button>
     </form>
   );
