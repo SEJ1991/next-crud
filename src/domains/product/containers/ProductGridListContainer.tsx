@@ -1,4 +1,5 @@
 'use client';
+import { ProductGridList } from '@/domains/product/components/ProductGridList';
 import { getAllProducts } from '@/domains/product/services/product';
 import { useQuery } from '@tanstack/react-query';
 
@@ -12,7 +13,6 @@ export function ProductGridListContainer({ category = 'all', skip }: Props) {
     queryFn: () => getAllProducts({ skip }),
   });
 
-  console.log(data?.products);
-
-  return <div>ProductsContainer</div>;
+  const products = data?.products ?? [];
+  return <ProductGridList products={products} />;
 }
