@@ -1,5 +1,6 @@
 'use client';
 import { getProduct, ProductDetail } from '@/domains/product';
+import { getProduct, ProductDetail } from '@/domains/product';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 

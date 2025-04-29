@@ -35,6 +35,6 @@ const LINKS = [
   { href: '/movies', label: 'All' },
   { href: '/movies/now-playing', label: 'Now-playing' },
   { href: '/movies/popular', label: 'Popular' },
-  { href: '/movies/top_rated', label: 'Top-rated' },
+  { href: '/movies/top-rated', label: 'Top-rated' },
   { href: '/movies/upcoming', label: 'Upcoming' },
 ];

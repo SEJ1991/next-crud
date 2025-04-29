@@ -1,4 +1,5 @@
 import { getProduct, ProductDetailContainer } from '@/domains/product';
+import { getProduct, ProductDetailContainer } from '@/domains/product';
 import { PageFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
@@ -26,6 +27,7 @@ export default async function ProductPage({ params, searchParams }: Props) {
     gcTime: 0,
   });
 
+  if (!queryClient.getQueryData(['products', id])) {
   if (!queryClient.getQueryData(['products', id])) {
     notFound();
   }
