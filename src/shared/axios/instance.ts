@@ -1,3 +1,4 @@
+import { ITEM_OFFSET } from '@/domains/product';
 import axios from 'axios';
 
 export const movieAxios = axios.create({
@@ -10,6 +11,6 @@ export const movieAxios = axios.create({
 export const productAxios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_PRODUCT_API_URL,
   params: {
-    limit: 20,
+    limit: ITEM_OFFSET,
   },
 });

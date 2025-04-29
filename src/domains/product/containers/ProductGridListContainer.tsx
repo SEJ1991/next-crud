@@ -1,18 +1,34 @@
 'use client';
-import { ProductGridList } from '@/domains/product/components/ProductGridList';
-import { getAllProducts } from '@/domains/product/services/product';
+import {
+  ProductGridList,
+  ProductPagination,
+  getAllProducts,
+  getLastPage,
+  getNowPage,
+  getPages,
+  getSkip,
+} from '@/domains/product';
 import { useQuery } from '@tanstack/react-query';
 
 interface Props {
   category?: string;
-  skip: number;
+  page: number;
 }
-export function ProductGridListContainer({ category = 'all', skip }: Props) {
+export function ProductGridListContainer({ category = 'all', page }: Props) {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['products', category, skip],
-    queryFn: () => getAllProducts({ skip }),
+    queryKey: ['products', category, page],
+    queryFn: () => getAllProducts({ skip: getSkip(page) }),
   });
 
-  const products = data?.products ?? [];
-  return <ProductGridList products={products} />;
+  const handleClickPage = (page: number) => () => {};
+
+  if (isLoading || isError || !data) return <div>로딩</div>;
+  const { products, skip, total } = data;
+
+  return (
+    <>
+      <ProductGridList products={products} />
+      <ProductPagination skip={skip} total={total} onClickPage={handleClickPage} />
+    </>
+  );
 }

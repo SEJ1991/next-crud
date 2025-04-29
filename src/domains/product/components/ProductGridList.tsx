@@ -7,7 +7,7 @@ interface Props {
 }
 export function ProductGridList({ products }: Props) {
   return (
-    <ul className='grid grid-cols-2 gap-4 mx-auto sm:grid-cols-3 lg:grid-cols-5 lg:gap-6'>
+    <ul className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-6'>
       {products.map(({ id, title, price, discountPercentage, thumbnail, stock, rating }) => (
         <li
           key={`grid-products-${id}`}
@@ -28,7 +28,7 @@ export function ProductGridList({ products }: Props) {
               </p>
               {discountPercentage > 0 && (
                 <span className='text-red-500'>
-                  <strong>${getDiscountPrice(price, discountPercentage).toLocaleString()}</strong> (
+                  <strong>${getDiscountPrice(price, discountPercentage).toLocaleString()}</strong>(
                   {discountPercentage}%)
                 </span>
               )}
