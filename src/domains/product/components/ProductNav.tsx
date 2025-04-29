@@ -11,7 +11,7 @@ export function ProductNav({ links, onClickRefresh }: Props) {
   const pathname = usePathname();
 
   return (
-    <>
+    <div>
       <div className='flex justify-between items-center mb-4'>
         <h2 className='font-semibold text-2xl'>Categories</h2>
         <button
@@ -41,6 +41,6 @@ export function ProductNav({ links, onClickRefresh }: Props) {
           })}
         </ul>
       </nav>
-    </>
+    </div>
   );
 }

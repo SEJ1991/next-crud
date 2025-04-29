@@ -31,7 +31,7 @@ export default async function ProductsByCategoryPage({ params, searchParams }: P
   });
 
   return (
-    <PageFrame className='flex flex-col gap-8'>
+    <PageFrame className='flex flex-col gap-8 pt-page-frame-with-header-height md:!pt-[var(--size-page-frame-padding-y)]'>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <section className='flex flex-col gap-6'>
           <h1 className='text-4xl font-semibold'>

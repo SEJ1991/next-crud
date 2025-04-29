@@ -10,6 +10,7 @@ export * from './components/icons/ArrowRightIcon';
 export * from './components/icons/ArrowUpIcon';
 export * from './components/icons/DoubleArrowLeftIcon';
 export * from './components/icons/DoubleArrowRightIcon';
+export * from './components/icons/HamburgerIcon';
 export * from './components/icons/HomeIcon';
 export * from './components/icons/MoonIcon';
 export * from './components/icons/SpinnerIcon';
