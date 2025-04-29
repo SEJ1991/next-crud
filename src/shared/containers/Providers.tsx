@@ -1,7 +1,9 @@
 'use client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider } from 'next-themes';
-import { Toaster } from 'sonner';
+import { ThemeProvider, useTheme } from 'next-themes';
+import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+import { toast, Toaster } from 'sonner';
 
 interface Props {
   children: React.ReactNode;
@@ -9,9 +11,26 @@ interface Props {
 export function Providers({ children }: Props) {
   return (
     <QueryClientProvider client={CLIENT}>
-      <Toaster />
-      <ThemeProvider attribute='class'>{children}</ThemeProvider>
+      <ThemeProvider attribute='class'>
+        <LowLevelProviders>{children}</LowLevelProviders>
+      </ThemeProvider>
     </QueryClientProvider>
+  );
+}
+
+function LowLevelProviders({ children }: Props) {
+  const { theme } = useTheme();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    toast.dismiss();
+  }, [pathname]);
+
+  return (
+    <>
+      <Toaster position='top-center' theme={(theme as 'dark' | 'light' | undefined) ?? 'system'} />
+      {children}
+    </>
   );
 }
 
