@@ -28,7 +28,7 @@ export function ProductGridListContainer({ category = 'all', page }: Props) {
   });
 
   const handleClickCard = (id: number, itemCategory: string) => () => {
-    router.push(`/products/${itemCategory}/${id}`);
+    router.push(`/products/${itemCategory}/${id}?returnCategory=${category}&returnPage=${page}`);
   };
 
   const handleClickPage = (page: number) => () => {
