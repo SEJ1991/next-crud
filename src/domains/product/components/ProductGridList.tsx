@@ -1,5 +1,5 @@
-import { Product } from '@/domains/product';
-import { ImageWithSkeleton, StarIcon } from '@/shared';
+import { getDiscountPrice, Product, ProductRatingBadge } from '@/domains/product';
+import { ImageWithSkeleton } from '@/shared';
 import clsx from 'clsx';
 
 interface Props {
@@ -18,10 +18,7 @@ export function ProductGridList({ products, onClickCard }: Props) {
             onClick={onClickCard(id, category)}
           >
             <div className='relative aspect-square rounded-md overflow-hidden'>
-              <div className='absolute top-0 right-0 flex justify-center items-center gap-1 px-2 py-0.5 bg-gray-800/80 text-white-primary rounded-md z-1'>
-                <StarIcon className='size-4 text-amber-200' />
-                {rating}
-              </div>
+              <ProductRatingBadge rating={rating} />
               <ImageWithSkeleton
                 src={thumbnail}
                 alt={`${title}'s thumbnail`}
@@ -53,9 +50,4 @@ export function ProductGridList({ products, onClickCard }: Props) {
       )}
     </ul>
   );
-}
-
-function getDiscountPrice(price: number, discountPercentage: number) {
-  const discount = price * (discountPercentage / 100);
-  return Math.floor((price - discount) * 100) / 100;
 }
