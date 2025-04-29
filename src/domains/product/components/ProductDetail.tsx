@@ -6,13 +6,16 @@ import {
   ProductInfo,
   ProductRatingBadge,
 } from '@/domains/product';
-import { ImageWithSkeleton } from '@/shared';
+import { ArrowLeftIcon, ImageWithSkeleton } from '@/shared';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface Props {
   product: ProductInfo;
+  onClickBack: () => void;
+  onClickEdit: (id: number, category: string) => () => void;
+  onClickDelete: (id: number) => () => void;
 }
 export function ProductDetail({
   product: {
@@ -39,6 +42,9 @@ export function ProductDetail({
       depth, // 상품 깊이
     },
   },
+  onClickBack,
+  onClickEdit,
+  onClickDelete,
 }: Props) {
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
 
@@ -49,7 +55,29 @@ export function ProductDetail({
   const isDiscount = discountPercentage > 0;
   return (
     <div className='flex flex-col gap-16 lg:w-[80%]'>
-      <h1 className='text-4xl font-semibold'>{title}</h1>
+      <div className='flex items-center gap-4'>
+        <button
+          onClick={onClickBack}
+          className='size-10 border border-border-primary rounded-md shrink-0'
+        >
+          <ArrowLeftIcon className='size-full' />
+        </button>
+        <h1 className='text-4xl font-semibold'>{title}</h1>
+        <div className='flex flex-col gap-2 sm:flex-row'>
+          <button
+            className='border border-border-primary px-5 py-2 rounded-md'
+            onClick={onClickEdit(id, category)}
+          >
+            Edit
+          </button>
+          <button
+            className='px-5 py-2 rounded-md bg-red-500 text-white-primary'
+            onClick={onClickDelete(id)}
+          >
+            Delete
+          </button>
+        </div>
+      </div>
       <section className='flex flex-col'>
         <div className='flex flex-col items-center gap-6 lg:flex-row lg:items-stretch'>
           <div>
