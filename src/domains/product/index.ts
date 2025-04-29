@@ -1,2 +1,11 @@
 // components
-export * from './components/ProductSidebar';
+export * from './components/ProductNav';
+
+// containers
+export * from './containers/ProductNavContainer';
+
+// services
+export * from './services/product';
+
+// types
+export * from './types';

@@ -35,3 +35,6 @@ export * from './containers/Providers';
 
 // hooks
 export * from './hooks/useClickOutside';
+
+// types
+export * from './types';
