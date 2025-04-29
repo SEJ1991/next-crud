@@ -7,6 +7,7 @@ export * from './components/ProductHeader';
 export * from './components/ProductPagination';
 
 // containers
+export * from './containers/ProductDetailContainer';
 export * from './containers/ProductGridListContainer';
 export * from './containers/ProductNavContainer';
 
