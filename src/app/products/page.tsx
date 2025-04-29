@@ -2,6 +2,33 @@ import { getAllProducts, getSkip, ProductGridListContainer } from '@/domains/pro
 import { PageFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
+export const dynamic = 'force-dynamic';
+export const metadata = {
+  title: 'All products | NEXT-CRUD',
+  description: 'Browse products by various categories.',
+  openGraph: {
+    title: 'All products | NEXT-CRUD',
+    description: 'Browse products by various categories.',
+    type: 'website',
+    // url: 'https://yourdomain.com/products',
+    // siteName: 'MyMovieApp',
+    // images: [
+    //   {
+    //     url: 'https://yourdomain.com/og-image/products.png',
+    //     width: 1200,
+    //     height: 630,
+    //     alt: 'All products | NEXT-CRUD',
+    //   },
+    // ],
+  },
+  twitter: {
+    title: 'All products | NEXT-CRUD',
+    description: 'Browse products by various categories.',
+    // images: ['https://yourdomain.com/og-image/products.png'],
+    // card: 'summary_large_image',
+  },
+};
+
 interface Props {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }
