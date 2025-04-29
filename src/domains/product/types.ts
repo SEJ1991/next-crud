@@ -49,7 +49,7 @@ export interface Product {
   thumbnail: string;
 }
 
-export interface ProductDetail extends Product {
+export interface ProductInfo extends Product {
   brand: string;
 }
 

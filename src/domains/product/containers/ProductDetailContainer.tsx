@@ -1,5 +1,5 @@
 'use client';
-import { getProduct } from '@/domains/product';
+import { getProduct, ProductDetail } from '@/domains/product';
 import { useQuery } from '@tanstack/react-query';
 
 interface Props {
@@ -19,5 +19,5 @@ export function ProductDetailContainer({ id }: Props) {
 
   console.log(product);
   if (isLoading || isError || !product) return <div>로딩</div>;
-  return <div>ProductDetailContainer</div>;
+  return <ProductDetail product={product} />;
 }
