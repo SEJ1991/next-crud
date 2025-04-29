@@ -1,56 +1,18 @@
 'use client';
 import { HomeIcon } from '@/shared/components/icons/HomeIcon';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
-import { SpinnerIcon } from '@/shared/components/icons/SpinnerIcon';
+import { ComponentPropsWithoutRef } from 'react';
 
-export function HomeButton(props: HTMLMotionProps<'button'>) {
-  const [mounted, setMounted] = useState(false);
+export function HomeButton(props: ComponentPropsWithoutRef<'button'>) {
   const router = useRouter();
 
   const handleClick = () => {
     router.push('/');
   };
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
   return (
-    <motion.button
-      transition={{ type: 'spring', stiffness: 200, damping: 10 }}
-      {...props}
-      onClick={handleClick}
-    >
-      <AnimatePresence>
-        {mounted ? (
-          <MotionHomeIcon
-            className='size-full'
-            initial={{
-              opacity: 0,
-              scale: 0.8,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-            }}
-            exit={{
-              opacity: 0,
-              scale: 0.8,
-            }}
-            transition={{
-              type: 'spring',
-              stiffness: 200,
-              damping: 10,
-              duration: 0.3,
-            }}
-          />
-        ) : (
-          <SpinnerIcon className='size-full animate-spin' />
-        )}
-      </AnimatePresence>
-    </motion.button>
+    <button {...props} onClick={handleClick}>
+      <HomeIcon className='size-full' />
+    </button>
   );
 }
-
-const MotionHomeIcon = motion.create(HomeIcon);

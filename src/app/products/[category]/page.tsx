@@ -1,5 +1,5 @@
-import React from 'react';
+import { PageFrame } from '@/shared';
 
 export default function ProductsByCategoryPage() {
-  return <div>page</div>;
+  return <PageFrame>page</PageFrame>;
 }

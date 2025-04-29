@@ -23,6 +23,7 @@ export * from './components/IntersectionPointer';
 export * from './components/LayoutFrame';
 export * from './components/Modal';
 export * from './components/NextLink';
+export * from './components/PageFrame';
 export * from './components/PortalRoot';
 export * from './components/Searchbar';
 export * from './components/SectionFrame';
