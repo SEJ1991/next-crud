@@ -1,4 +1,4 @@
-import { getAllProducts, getSkip, ProductGridListContainer } from '@/domains/product';
+import { getProductsByCategory, getSkip, ProductGridListContainer } from '@/domains/product';
 import { PageFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
@@ -14,7 +14,7 @@ export default async function ProductsByCategoryPage({ params, searchParams }: P
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ['products', category, page],
-    queryFn: () => getAllProducts({ skip: getSkip(page) }),
+    queryFn: () => getProductsByCategory({ skip: getSkip(page) }, category),
   });
 
   return (
@@ -22,9 +22,9 @@ export default async function ProductsByCategoryPage({ params, searchParams }: P
       <HydrationBoundary state={dehydrate(queryClient)}>
         <section className='flex flex-col gap-6'>
           <h1 className='text-4xl font-semibold'>
-            {category.charAt(0).toUpperCase() + category.slice(1)} products
+            {category.charAt(0).toUpperCase() + category.slice(1)}
           </h1>
-          <ProductGridListContainer page={page} />
+          <ProductGridListContainer page={page} category={category} />
         </section>
       </HydrationBoundary>
     </PageFrame>

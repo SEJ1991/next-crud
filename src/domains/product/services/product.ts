@@ -10,3 +10,8 @@ export async function getAllProducts(params: ProductsRequest): Promise<ProductsR
   const response = await productAxios.get('/products', { params });
   return response.data;
 }
+
+export async function getProductsByCategory(params: ProductsRequest, category: string) {
+  const response = await productAxios.get(`/products/category/${category}`, { params });
+  return response.data;
+}
