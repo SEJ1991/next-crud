@@ -1,4 +1,4 @@
-import { getProduct, ProductDetail, ProductDetailContainer } from '@/domains/product';
+import { getProduct, ProductDetailContainer } from '@/domains/product';
 import { PageFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
@@ -18,17 +18,17 @@ export default async function ProductPage({ params }: Props) {
     gcTime: 0,
   });
 
-  const product = queryClient.getQueryData<ProductDetail>(['products', id]);
-  if (!product) {
+  if (!queryClient.getQueryData(['products', id])) {
     notFound();
   }
 
   return (
     <PageFrame className='flex flex-col gap-8 pt-page-frame-with-header-height md:!pt-[var(--size-page-frame-padding-y)]'>
-      <h1 className='text-4xl font-semibold'>{product.title}</h1>
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <ProductDetailContainer id={id} />
-      </HydrationBoundary>
+      <section>
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <ProductDetailContainer id={id} />
+        </HydrationBoundary>
+      </section>
     </PageFrame>
   );
 }
