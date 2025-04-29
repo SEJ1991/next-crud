@@ -22,6 +22,8 @@ export function ProductGridListContainer({ category = 'all', page }: Props) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['products', category, page],
     queryFn: () => getProducts(category, page),
+    gcTime: 0,
+    staleTime: 0,
   });
 
   const handleClickPage = (page: number) => () => {
