@@ -1,4 +1,5 @@
 // components
+export * from './components/skeletons/ProductNavSkeleton';
 export * from './components/ProductNav';
 
 // containers

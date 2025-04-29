@@ -1,7 +1,7 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-import { LinkInterface, NextLink } from '@/shared';
+import { LinkInterface, NextLink, RefreshIcon } from '@/shared';
 
 interface Props {
   links: LinkInterface[];
@@ -12,13 +12,13 @@ export function ProductNav({ links, onClickRefresh }: Props) {
 
   return (
     <>
-      <div className='flex justify-between'>
-        <h2 className='mb-4 font-semibold text-2xl'>Categories</h2>
+      <div className='flex justify-between items-center mb-4'>
+        <h2 className='font-semibold text-2xl'>Categories</h2>
         <button
-          className='px-2 py-1 border border-border-primary rounded-md'
+          className='size-6 p-1 border border-border-primary rounded-md'
           onClick={onClickRefresh}
         >
-          Refresh
+          <RefreshIcon className='size-full' />
         </button>
       </div>
       <nav>
