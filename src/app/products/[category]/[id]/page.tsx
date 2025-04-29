@@ -1,6 +1,6 @@
-import { getProduct } from '@/domains/product';
+import { getProduct, ProductDetail, ProductDetailContainer } from '@/domains/product';
 import { PageFrame } from '@/shared';
-import { QueryClient } from '@tanstack/react-query';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
@@ -18,11 +18,19 @@ export default async function ProductPage({ params }: Props) {
     gcTime: 0,
   });
 
-  if (!queryClient.getQueryData(['products', id])) {
+  const product = queryClient.getQueryData<ProductDetail>(['products', id]);
+  if (!product) {
     notFound();
   }
 
-  return <PageFrame>{id}</PageFrame>;
+  return (
+    <PageFrame className='flex flex-col gap-8 pt-page-frame-with-header-height md:!pt-[var(--size-page-frame-padding-y)]'>
+      <h1 className='text-4xl font-semibold'>{product.title}</h1>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <ProductDetailContainer id={id} />
+      </HydrationBoundary>
+    </PageFrame>
+  );
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -30,10 +38,9 @@ export async function generateMetadata({ params }: Props) {
   const product = await getProduct(id);
 
   if (!product) notFound();
-
+  const { description, thumbnail, title: productTitle } = product;
   const title = `${product.title} | NEXT-CRUD`;
-  const description = product.description;
-  const image = product.thumbnail;
+  const image = thumbnail;
 
   return {
     title,
@@ -46,7 +53,7 @@ export async function generateMetadata({ params }: Props) {
           url: image,
           width: 800,
           height: 600,
-          alt: product.title,
+          alt: productTitle,
         },
       ],
       type: 'website',
