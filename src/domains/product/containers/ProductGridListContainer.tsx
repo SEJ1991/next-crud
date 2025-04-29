@@ -23,7 +23,8 @@ export function ProductGridListContainer({ category = 'all', page }: Props) {
     queryKey: ['products', category, page],
     queryFn: () => getProducts(category, page),
     gcTime: 0,
-    staleTime: 0,
+    staleTime: 60000,
+    placeholderData: prevData => prevData,
   });
 
   const handleClickPage = (page: number) => () => {
