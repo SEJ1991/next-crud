@@ -30,7 +30,7 @@ export function MovieSwiperContainer({ status = 'all' }: Props) {
     }
 
     const { offsetWidth } = document.documentElement;
-    let perView = 2;
+    let perView = 3;
     if (offsetWidth >= 1024) {
       perView = 8;
     } else if (offsetWidth >= 768) {

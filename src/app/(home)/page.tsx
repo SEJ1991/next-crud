@@ -3,7 +3,7 @@ import { NextLink, ThemeButton } from '@/shared';
 export default function HomePage() {
   return (
     <>
-      <ThemeButton iconClassName='size-6 md:size-8' />
+      <ThemeButton />
       <h1 className='text-accent-primary text-2xl sm:text-3xl md:text-4xl'>
         Next.js CRUD reference website.
       </h1>
