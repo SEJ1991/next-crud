@@ -1,23 +1,18 @@
 'use client';
 import { MovieMenu, MovieNav } from '@/domains/movie';
-import { ArrowDownIcon, HomeIcon, useClickOutside } from '@/shared';
+import { ArrowDownIcon, HomeButton, useClickOutside } from '@/shared';
 import clsx from 'clsx';
 import { AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import {} from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 export function MovieHeader() {
-  const router = useRouter();
   const ref = useRef<HTMLHeadElement>(null);
   const menuRef = useClickOutside<HTMLDivElement>(() => setIsOpenMenu(false));
   const { scrollY } = useScroll();
 
   const [isScroll, setIsScroll] = useState(false);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-
-  const handleClickHome = () => {
-    router.push('/');
-  };
 
   const handleClickMenu = () => {
     setIsOpenMenu(prev => !prev);
@@ -55,9 +50,8 @@ export function MovieHeader() {
           isScroll ? 'to-black-primary' : 'to-[rgba(0,0,0,0)]'
         )}
       />
-      <button className='z-1' onClick={handleClickHome}>
-        <HomeIcon className='size-6' />
-      </button>
+      <HomeButton className='size-6 z-1' />
+
       <div ref={menuRef} className='relative z-1 sm:hidden'>
         <button className='flex gap-1 items-center text-sm' onClick={handleClickMenu}>
           Menu

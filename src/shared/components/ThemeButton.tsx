@@ -31,10 +31,10 @@ export function ThemeButton({ iconClassName, iconSize = '2rem', ...props }: Prop
 
   const Icon = () => {
     if (!mounted) {
-      return <SpinnerIcon className='animate-spin duration-800' size={iconSize} />;
+      return <SpinnerIcon className='size-full animate-spin duration-800' size={iconSize} />;
     }
 
-    const baseIconClassName = 'transition-colors duration-300';
+    const baseIconClassName = 'size-full transition-colors duration-300';
     if (theme === 'dark')
       return (
         <MotionMoonIcon

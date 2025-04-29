@@ -1,7 +1,8 @@
 import { ProductNavContainer, getCategories } from '@/domains/product';
-import { HomeIcon, LayoutFrame, ThemeButton } from '@/shared';
+import { LayoutFrame, ThemeButton } from '@/shared';
 import React from 'react';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import { HomeButton } from '@/shared/components/HomeButton';
 
 export const revalidate = 60;
 
@@ -20,7 +21,7 @@ export default async function ProductLayout({ children }: Props) {
       <aside className='hidden flex-col gap-4 w-[var(--size-left-sidebar-width)] h-dvh px-[var(--size-page-frame-padding-x)] py-[var(--size-page-frame-padding-y)] border-r border-border-primary md:flex'>
         <ul className='flex items-center gap-4'>
           <li>
-            <HomeIcon className='size-8' />
+            <HomeButton className='size-8' />
           </li>
           <li>
             <ThemeButton />
