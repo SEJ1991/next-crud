@@ -17,10 +17,7 @@ export function Pagination({ nowPage, pages, lastPage, onClickPage, ...props }: 
   const isNotLastOffset = lastPageNumber !== lastPage;
 
   return (
-    <div
-      {...props}
-      className={twMerge('flex justify-center items-center gap-2.5', props.className)}
-    >
+    <div {...props} className={twMerge('flex justify-center items-center gap-2', props.className)}>
       <ArrowButton isActive={isNotFirstOffset} onClick={onClickPage(1)}>
         <DoubleArrowLeftIcon className='size-full' />
       </ArrowButton>
@@ -28,11 +25,14 @@ export function Pagination({ nowPage, pages, lastPage, onClickPage, ...props }: 
         <ArrowLeftIcon className='size-full' />
       </ArrowButton>
 
-      <ul className='flex items-center gap-3'>
+      <ul className='flex items-center gap-5 mx-2'>
         {pages.map(page => (
           <li key={`pagination-${page}`}>
             <button
-              className={clsx(nowPage === page && 'text-lg text-accent-primary font-semibold')}
+              className={clsx(
+                'text-lg  transition-colors duration-500',
+                nowPage === page && 'text-accent-primary font-semibold'
+              )}
               onClick={onClickPage(page)}
             >
               {page}
