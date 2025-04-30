@@ -2,6 +2,7 @@ import {
   getCategories,
   getProductsByCategory,
   getSkip,
+  ProductCreateButton,
   ProductGridListContainer,
 } from '@/domains/product';
 import { PageFrame } from '@/shared';
@@ -40,6 +41,7 @@ export default async function ProductsByCategoryPage({ params, searchParams }: P
           <ProductGridListContainer page={page} category={category} />
         </section>
       </HydrationBoundary>
+      <ProductCreateButton />
     </PageFrame>
   );
 }

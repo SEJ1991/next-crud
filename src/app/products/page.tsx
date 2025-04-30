@@ -1,4 +1,9 @@
-import { getAllProducts, getSkip, ProductGridListContainer } from '@/domains/product';
+import {
+  getAllProducts,
+  getSkip,
+  ProductCreateButton,
+  ProductGridListContainer,
+} from '@/domains/product';
 import { PageFrame } from '@/shared';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
@@ -51,6 +56,7 @@ export default async function ProductsPage({ searchParams }: Props) {
           <ProductGridListContainer page={page} />
         </section>
       </HydrationBoundary>
+      <ProductCreateButton />
     </PageFrame>
   );
 }
