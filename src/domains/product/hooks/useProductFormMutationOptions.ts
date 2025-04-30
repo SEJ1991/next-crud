@@ -1,6 +1,7 @@
+'use client';
 import { createProduct, ProductUpdateRequest, updateProduct } from '@/domains/product';
 import { useQueryClient } from '@tanstack/react-query';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 import { toast } from 'sonner';
 
@@ -11,6 +12,13 @@ interface Props {
   returnCategory: string;
   returnPage: string;
 }
+/**
+ * ProductFormContainer에서 useMutation의 mutation options 객체를 반환하는 훅
+ *
+ * - 상품 생성/수정 시 공통적으로 사용하는 mutationFn, onMutate, onSettled을 mode에 따라 분기 처리
+ * - 성공 시 toast 메시지를 표시하고, 관련 products 캐시를 invalidate
+ * - 작업 완료 후에는 알맞은 페이지로 router.replace를 통해 이동
+ */
 export function useProductFormMutationOptions({
   id,
   mode,
