@@ -15,7 +15,7 @@ interface Props {
   product: ProductInfo;
   onClickBack: () => void;
   onClickEdit: (id: number, category: string) => () => void;
-  onClickDelete: (id: number) => () => void;
+  onClickDelete: () => void;
 }
 export function ProductDetail({
   product: {
@@ -72,7 +72,7 @@ export function ProductDetail({
           </button>
           <ConfirmButton
             className='px-5 py-2 rounded-md bg-red-500 text-white-primary'
-            onConfirm={onClickDelete(id)}
+            onConfirm={onClickDelete}
           >
             Delete
           </ConfirmButton>
