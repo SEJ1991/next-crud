@@ -13,12 +13,10 @@ export * from './components/ProductRatingBadge';
 
 // containers
 export * from './containers/ProductDetailContainer';
-export * from './containers/ProductFormContainer';
+export * from './containers/ProductFormCreateContainer';
+export * from './containers/ProductFormUpdateContainer';
 export * from './containers/ProductGridListContainer';
 export * from './containers/ProductNavContainer';
-
-// hooks
-export * from './hooks/useProductFormMutationOptions';
 
 // services
 export * from './services/product';

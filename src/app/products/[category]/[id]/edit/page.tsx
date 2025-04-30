@@ -1,4 +1,4 @@
-import { getCategories, getProduct, ProductFormContainer } from '@/domains/product';
+import { getCategories, getProduct, ProductFormUpdateContainer } from '@/domains/product';
 import { PageFrame } from '@/shared';
 import { QueryClient } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
@@ -41,9 +41,8 @@ export default async function ProductEditPage({ params, searchParams }: Props) {
     <PageFrame className='flex flex-col gap-8 pt-page-frame-with-header-height md:!pt-[var(--size-page-frame-padding-y)]'>
       <section className='flex flex-col gap-6'>
         <h1 className='text-4xl font-semibold'>Edit Product</h1>
-        <ProductFormContainer
+        <ProductFormUpdateContainer
           id={id}
-          mode='edit'
           category={category}
           returnCategory={category === returnCategory ? category : 'all'}
           returnPage={returnPage}
