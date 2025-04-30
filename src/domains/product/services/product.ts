@@ -1,4 +1,12 @@
-import { ProductCategory, ProductInfo, ProductsRequest, ProductsResponse } from '@/domains/product';
+import {
+  ProductCategory,
+  ProductFormRequest,
+  ProductFormResponse,
+  ProductInfo,
+  ProductsRequest,
+  ProductsResponse,
+  ProductUpdateRequest,
+} from '@/domains/product';
 import { productAxios } from '@/shared';
 
 export async function getCategories(): Promise<ProductCategory[]> {
@@ -18,6 +26,19 @@ export async function getProductsByCategory(params: ProductsRequest, category: s
 
 export async function getProduct(id: string): Promise<ProductInfo> {
   const response = await productAxios.get(`/products/${id}`);
+  return response.data;
+}
+
+export async function createProduct(data: ProductFormRequest): Promise<ProductFormResponse> {
+  const response = await productAxios.post('/products/add', data);
+  return response.data;
+}
+
+export async function updateProduct(
+  id: string,
+  data: ProductUpdateRequest
+): Promise<ProductFormResponse> {
+  const response = await productAxios.patch(`/products/${id}`, data);
   return response.data;
 }
 
