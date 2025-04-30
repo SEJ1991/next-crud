@@ -11,6 +11,7 @@ export * from './components/ProductNav';
 export * from './components/ProductHeader';
 export * from './components/ProductPagination';
 export * from './components/ProductRatingBadge';
+export * from './components/ProductWidget';
 
 // containers
 export * from './containers/ProductDetailContainer';
@@ -18,6 +19,7 @@ export * from './containers/ProductFormCreateContainer';
 export * from './containers/ProductFormUpdateContainer';
 export * from './containers/ProductGridListContainer';
 export * from './containers/ProductNavContainer';
+export * from './containers/ProductWidgetContainer';
 
 // services
 export * from './services/product';
