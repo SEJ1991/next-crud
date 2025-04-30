@@ -90,3 +90,9 @@
     box-shadow: 0 0 8px 1px var(--color-shadow-primary);
   }
 }
+
+@layer components {
+  .form-input-layout {
+    @apply border px-3 py-2 rounded-md;
+  }
+}

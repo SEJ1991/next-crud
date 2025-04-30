@@ -53,6 +53,8 @@ export interface ProductInfo extends Product {
   brand: string;
 }
 
+export type ProductFormType = ProductUpdateRequest;
+
 // api interface
 export interface ProductsRequest {
   skip: number;
