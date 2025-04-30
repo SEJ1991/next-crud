@@ -1,6 +1,6 @@
 import { getCategories, getProduct, ProductFormUpdateContainer } from '@/domains/product';
 import { PageFrame } from '@/shared';
-import { QueryClient } from '@tanstack/react-query';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
@@ -40,13 +40,15 @@ export default async function ProductEditPage({ params, searchParams }: Props) {
   return (
     <PageFrame className='flex flex-col gap-8 pt-page-frame-with-header-height md:!pt-[var(--size-page-frame-padding-y)]'>
       <section className='flex flex-col gap-6'>
-        <h1 className='text-4xl font-semibold'>Edit Product</h1>
-        <ProductFormUpdateContainer
-          id={id}
-          category={category}
-          returnCategory={category === returnCategory ? category : 'all'}
-          returnPage={returnPage}
-        />
+        <h1 className='text-4xl font-semibold'>Edit product</h1>
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <ProductFormUpdateContainer
+            id={id}
+            category={category}
+            returnCategory={category === returnCategory ? category : 'all'}
+            returnPage={returnPage}
+          />
+        </HydrationBoundary>
       </section>
     </PageFrame>
   );
