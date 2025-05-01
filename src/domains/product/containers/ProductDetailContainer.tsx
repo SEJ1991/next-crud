@@ -50,7 +50,7 @@ export function ProductDetailContainer({ id, returnCategory, returnPage }: Props
   });
 
   const handleClickBack = () => {
-    let replacePathname = `/products`;
+    let replacePathname = '/products';
     if (returnCategory !== 'all') {
       replacePathname += `/${returnCategory}`;
     }
@@ -58,7 +58,9 @@ export function ProductDetailContainer({ id, returnCategory, returnPage }: Props
   };
 
   const handleClickEdit = (id: number, category: string) => () => {
-    router.push(`/products/${category}/${id}/edit`);
+    router.push(
+      `/products/${category}/${id}/edit?returnCategory=${returnCategory}&returnPage=${returnPage}`
+    );
   };
 
   const handleClickDelete = () => {
