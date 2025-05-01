@@ -5,7 +5,7 @@
 <br/><br/>
 ‼️ `DummyJSON`를 사용하는 관계로 PATCH, DELETE, POST 메소드는 작동되는 흉내만 낼뿐 결과물에 대해선 변동 사항이 없습니다.<br/>
 
-⚠️ _(예: 상품 삭제를 해도 요청과 응답만 보여주고 실제로 해당 게시물은 삭제가 되지 않음)_
+⚠️ _(예: 상품 삭제를 해도 요청과 응답만 보여주고 실제로 해당 상품은 삭제가 되지 않음)_
 
 #### 🔗 <a href='https://next-crud-mu-steel.vercel.app' target='_blank'>https://next-crud-mu-steel.vercel.app</a>
 
