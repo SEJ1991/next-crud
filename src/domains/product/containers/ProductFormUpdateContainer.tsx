@@ -1,5 +1,6 @@
 'use client';
 import {
+  fakeUploadImagesToLikeS3,
   getCategories,
   getProduct,
   ProductForm,
@@ -21,22 +22,14 @@ export function ProductFormUpdateContainer({ id, category, returnCategory, retur
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const {
-    data: product,
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data: product } = useQuery({
     queryKey: ['products', id],
     queryFn: () => getProduct(id),
     gcTime: 0,
     staleTime: 1000 * 60,
   });
 
-  const {
-    data: categories,
-    isLoading: isCategoryLoading,
-    isError: isCategoryError,
-  } = useQuery({
+  const { data: categories } = useQuery({
     queryKey: ['categories'],
     queryFn: () => getCategories(),
   });
@@ -75,28 +68,62 @@ export function ProductFormUpdateContainer({ id, category, returnCategory, retur
     );
   };
 
-  const handleSubmit = (formData: ProductFormType) => {
-    mutate(formData as ProductUpdateRequest);
+  const handleSubmit = async (formData: ProductFormType) => {
+    if (!product) return;
+
+    const { category: productCategory, thumbnail, images } = product;
+    const data: ProductUpdateRequest = {
+      ...formData,
+      thumbnail,
+      images,
+    };
+
+    const formCategory = formData.category ?? productCategory;
+    if (formData.thumbnail) {
+      const dataThumbnail = await fakeUploadImagesToLikeS3([formData.thumbnail], formCategory);
+
+      // return; 업로드 에러 발생시
+
+      if (dataThumbnail[0]) {
+        data.thumbnail = dataThumbnail[0];
+      }
+    }
+    if (formData.images) {
+      const dataImages = await fakeUploadImagesToLikeS3(formData.images, formCategory);
+
+      // return; 업로드 에러 발생시
+
+      data.images = dataImages
+        .map((img, index) => {
+          if (img === null) {
+            // 이미지가 삭제되었을 경우
+            return '';
+          }
+
+          if (img === undefined) {
+            // 변경사항이 없는 경우
+            if (product.images[index]) {
+              // 변경된 사항이 없으면서 기존에 있던 사진이 있을 경우 해당 사진을 리턴
+              return product.images[index];
+            }
+            return '';
+          }
+
+          return img;
+        })
+        .filter(img => img);
+    }
+
+    mutate(data);
   };
 
   return (
     <ProductForm
       mode='edit'
       categories={categories ?? []}
+      product={product}
       onClcikBack={handleClickBack}
       onSubmit={handleSubmit}
-      defaultValues={{
-        title: product?.title,
-        description: product?.description,
-        price: product?.price,
-        discountPercentage: product?.discountPercentage,
-        rating: product?.rating,
-        stock: product?.stock,
-        brand: product?.brand,
-        category: product?.category,
-        thumbnail: product?.thumbnail,
-        images: product?.images,
-      }}
     />
   );
 }

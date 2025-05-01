@@ -53,7 +53,18 @@ export interface ProductInfo extends Product {
   brand: string;
 }
 
-export type ProductFormType = ProductUpdateRequest;
+export interface ProductFormType {
+  title: string;
+  description?: string;
+  price: number;
+  discountPercentage?: number;
+  rating?: number;
+  stock: number;
+  brand?: string;
+  category: string;
+  thumbnail: File;
+  images?: File[];
+}
 
 // api interface
 export interface ProductsRequest {
@@ -70,13 +81,13 @@ export interface ProductsResponse {
 export interface ProductFormRequest {
   title: string;
   description?: string;
-  price?: number;
+  price: number;
   discountPercentage?: number;
   rating?: number;
-  stock?: number;
+  stock: number;
   brand?: string;
-  category?: string;
-  thumbnail?: string;
+  category: string;
+  thumbnail: string;
   images?: string[];
 }
 

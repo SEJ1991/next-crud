@@ -1,6 +1,7 @@
 'use client';
 import {
   createProduct,
+  fakeUploadImagesToLikeS3,
   getCategories,
   ProductForm,
   ProductFormRequest,
@@ -18,11 +19,7 @@ export function ProductFormCreateContainer({ returnCategory, returnPage }: Props
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const {
-    data: categories,
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data: categories } = useQuery({
     queryKey: ['categories'],
     queryFn: () => getCategories(),
   });
@@ -66,8 +63,33 @@ export function ProductFormCreateContainer({ returnCategory, returnPage }: Props
     return;
   };
 
-  const handleSubmit = (formData: ProductFormType) => {
-    mutate(formData as ProductFormRequest);
+  const handleSubmit = async (formData: ProductFormType) => {
+    const data: ProductFormRequest = {
+      ...formData,
+      title: formData.title as string,
+      thumbnail: '',
+      images: [],
+    };
+
+    const formCategory = formData.category;
+    if (formData.thumbnail) {
+      const dataThumbnail = await fakeUploadImagesToLikeS3([formData.thumbnail], formCategory);
+
+      // return; 업로드 에러 발생시
+
+      if (dataThumbnail[0]) {
+        data.thumbnail = dataThumbnail[0];
+      }
+    }
+    if (formData.images) {
+      const dataImages = await fakeUploadImagesToLikeS3(formData.images, formCategory);
+
+      // return; 업로드 에러 발생시
+
+      data.images = dataImages.filter(img => img) as string[];
+    }
+
+    mutate(data);
   };
 
   return (
