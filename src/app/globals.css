@@ -50,6 +50,7 @@
 
   --color-border-primary: var(--color-border-primary);
   --color-accent-primary: var(--color-accent-primary);
+  --color-skeleton-primary: var(--color-skeleton-primary);
 
   --breakpoint-sm: 30em; /*  480px */
 }
