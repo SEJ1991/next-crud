@@ -20,6 +20,7 @@ export function ProductHeader(props: ComponentPropsWithoutRef<'header'>) {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 767px)');
     const initOpenMenu = (e: MediaQueryListEvent | MediaQueryList) => {
+      console.log(e);
       handleClickClose();
     };
 

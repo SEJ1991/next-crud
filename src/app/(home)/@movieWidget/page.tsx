@@ -1,7 +1,7 @@
 import { MovieWidgetContainer, getAllMovies } from '@/domains/movie';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
-export const revalidate = 60 * 60;
+export const revalidate = 3600;
 
 export default async function MovieWidgetPage() {
   const queryClient = new QueryClient();

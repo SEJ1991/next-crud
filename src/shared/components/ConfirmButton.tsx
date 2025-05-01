@@ -1,13 +1,8 @@
 import { motion, HTMLMotionProps } from 'framer-motion';
 import { ReactElement } from 'react';
-import { ExternalToast, toast } from 'sonner';
+import { toast } from 'sonner';
 
 interface Props extends HTMLMotionProps<'button'> {
-  messages?: {
-    loading?: string;
-    success?: string;
-    error?: string;
-  };
   onConfirm: () => void;
   onCancel?: () => void;
   customUI?: ({
@@ -18,13 +13,7 @@ interface Props extends HTMLMotionProps<'button'> {
     onNegative: () => void;
   }) => ReactElement;
 }
-export function ConfirmButton({
-  messages = { loading: 'Loading', success: 'Success', error: 'Error' },
-  onConfirm,
-  onCancel,
-  customUI,
-  ...props
-}: Props) {
+export function ConfirmButton({ onConfirm, onCancel, customUI, ...props }: Props) {
   const handleClick = async () => {
     toast.dismiss();
 
