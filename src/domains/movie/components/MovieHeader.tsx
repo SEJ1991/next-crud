@@ -29,6 +29,7 @@ export function MovieHeader() {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 479px)');
     const initOpenMenu = (e: MediaQueryListEvent | MediaQueryList) => {
+      console.log(e);
       setIsOpenMenu(false);
     };
 
