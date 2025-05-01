@@ -40,17 +40,17 @@ export function ProductForm({ mode = 'new', categories, product, onClcikBack, on
       return;
     }
 
-    const dirtyFormData: ProductFormType = {};
+    const dirtyFormData: Partial<ProductFormType> = {};
     Object.keys(dirtyFields).forEach(field => {
       const key = field as keyof ProductFormType;
       const value = formData[key];
 
       if (value !== undefined) {
-        dirtyFormData[key] = value;
+        (dirtyFormData as Record<string, unknown>)[key] = value;
       }
     });
 
-    onSubmit(dirtyFormData);
+    onSubmit(dirtyFormData as ProductFormType);
   };
 
   return (
