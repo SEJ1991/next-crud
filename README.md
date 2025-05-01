@@ -1,7 +1,7 @@
 # 🔥 Nextjs 도메인 구조 CRUD 레퍼런스 프로젝트 🔥
 
 **비즈니스 도메인별로 분리를 하여 비동기 CRUD 요청, 응답 처리과정을 보여주는 레퍼런스 프로젝트입니다.**
-
+**SSR(Server Side Rendering), SSG(Static Site Generation), ISR(Incremental Static Regeneration) 등 Next.js의 다양한 렌더링 전략을 실제 페이지에 적용하여 각 방식의 장단점과 활용 예시도 함께 제공합니다.**
 ‼️ `DummyJSON`를 사용하는 관계로 PATCH, DELETE, POST 메소드는 작동되는 흉내만 낼뿐 결과물에 대해선 변동 사항이 없습니다.<br/>
 ⚠️ _(예: 상품 삭제를 해도 요청과 응답만 보여주고 실제로 해당 게시물은 삭제가 되지 않음)_
 
