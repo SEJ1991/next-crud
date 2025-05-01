@@ -37,7 +37,7 @@ export default async function ProductLayout({ children }: Props) {
         </HydrationBoundary>
       </aside>
 
-      <FixedToTopButton className='bottom-25 md:bottom-10' />
+      <FixedToTopButton className='size-10 bottom-40 md:bottom-25' />
       <main>{children}</main>
     </LayoutFrame>
   );

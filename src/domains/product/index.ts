@@ -1,6 +1,7 @@
 // components
 export * from './components/skeletons/ProductGridListSkeleton';
 export * from './components/skeletons/ProductNavSkeleton';
+export * from './components/ProductCreateButton';
 export * from './components/ProductDetail';
 export * from './components/ProductDetailPolicySection';
 export * from './components/ProductDetailReviewSection';
