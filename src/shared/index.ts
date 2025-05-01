@@ -25,6 +25,7 @@ export * from './components/icons/XIcon';
 export * from './components/ConfirmButton';
 export * from './components/FixedToTopButton';
 export * from './components/HomeButton';
+export * from './components/ImageUploader';
 export * from './components/ImageWithSkeleton';
 export * from './components/IntersectionPointer';
 export * from './components/LayoutFrame';

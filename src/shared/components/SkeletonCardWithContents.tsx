@@ -12,9 +12,9 @@ export function SkeletonCardWithContents(props: HTMLMotionProps<'div'>) {
     >
       {props.children ?? (
         <>
-          <div className='h-40 w-full rounded-md bg-[var(--color-skeleton-primary)]' />
-          <div className='h-4 w-1/4 rounded-md bg-[var(--color-skeleton-primary)]' />
-          <div className='h-4 w-3/4 rounded-md bg-[var(--color-skeleton-primary)]' />
+          <div className='h-40 w-full rounded-md bg-skeleton-primary' />
+          <div className='h-4 w-1/4 rounded-md bg-skeleton-primary' />
+          <div className='h-4 w-3/4 rounded-md bg-skeleton-primary' />
         </>
       )}
     </motion.div>
