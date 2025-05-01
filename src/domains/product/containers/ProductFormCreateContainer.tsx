@@ -18,6 +18,15 @@ export function ProductFormCreateContainer({ returnCategory, returnPage }: Props
   const router = useRouter();
   const queryClient = useQueryClient();
 
+  const {
+    data: categories,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ['categories'],
+    queryFn: () => getCategories(),
+  });
+
   const { mutate } = useMutation({
     mutationFn: createProduct,
     onMutate: () => {
@@ -48,15 +57,6 @@ export function ProductFormCreateContainer({ returnCategory, returnPage }: Props
     },
   });
 
-  const {
-    data: categories,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ['categories'],
-    queryFn: () => getCategories(),
-  });
-
   const handleClickBack = () => {
     let replacePathname = `/products`;
     if (returnCategory !== 'all') {
@@ -70,13 +70,10 @@ export function ProductFormCreateContainer({ returnCategory, returnPage }: Props
     mutate(formData as ProductFormRequest);
   };
 
-  if (!categories || isLoading || isError) {
-    return <div>로딩</div>;
-  }
   return (
     <ProductForm
       mode='new'
-      categories={categories}
+      categories={categories ?? []}
       onClcikBack={handleClickBack}
       onSubmit={handleSubmit}
     />

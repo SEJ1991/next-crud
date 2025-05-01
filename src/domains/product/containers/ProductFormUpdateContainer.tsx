@@ -79,39 +79,23 @@ export function ProductFormUpdateContainer({ id, category, returnCategory, retur
     mutate(formData as ProductUpdateRequest);
   };
 
-  if (!product || !categories || isLoading || isError || isCategoryLoading || isCategoryError) {
-    return <div>로딩</div>;
-  }
-
-  const {
-    title,
-    description,
-    price,
-    discountPercentage,
-    rating,
-    stock,
-    brand,
-    category: productCategory,
-    thumbnail,
-    images,
-  } = product;
   return (
     <ProductForm
       mode='edit'
-      categories={categories}
+      categories={categories ?? []}
       onClcikBack={handleClickBack}
       onSubmit={handleSubmit}
       defaultValues={{
-        title,
-        description,
-        price,
-        discountPercentage,
-        rating,
-        stock,
-        brand,
-        category: productCategory,
-        thumbnail,
-        images,
+        title: product?.title,
+        description: product?.description,
+        price: product?.price,
+        discountPercentage: product?.discountPercentage,
+        rating: product?.rating,
+        stock: product?.stock,
+        brand: product?.brand,
+        category: product?.category,
+        thumbnail: product?.thumbnail,
+        images: product?.images,
       }}
     />
   );

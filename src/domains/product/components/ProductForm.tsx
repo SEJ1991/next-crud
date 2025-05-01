@@ -78,9 +78,6 @@ export function ProductForm({
             errors.category?.message && 'border border-red-400'
           )}
         >
-          <option value='' disabled>
-            none
-          </option>
           {categories.map(({ name, slug }) => (
             <option key={slug} value={slug}>
               {name}
