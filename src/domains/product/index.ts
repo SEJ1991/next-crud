@@ -27,6 +27,7 @@ export * from './services/product';
 // utils
 export * from './utils/number';
 export * from './utils/pagination';
+export * from './utils/upload';
 
 // constants
 export * from './constants';
