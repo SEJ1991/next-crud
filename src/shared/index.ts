@@ -21,6 +21,7 @@ export * from './components/icons/RefreshIcon';
 export * from './components/icons/SearchIcon';
 export * from './components/icons/TrophyIcon';
 export * from './components/icons/XIcon';
+export * from './components/ConfirmButton';
 export * from './components/FixedToTopButton';
 export * from './components/HomeButton';
 export * from './components/ImageWithSkeleton';

@@ -6,7 +6,7 @@ import {
   ProductInfo,
   ProductRatingBadge,
 } from '@/domains/product';
-import { ArrowLeftIcon, ImageWithSkeleton } from '@/shared';
+import { ArrowLeftIcon, ConfirmButton, ImageWithSkeleton } from '@/shared';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -70,12 +70,12 @@ export function ProductDetail({
           >
             Edit
           </button>
-          <button
+          <ConfirmButton
             className='px-5 py-2 rounded-md bg-red-500 text-white-primary'
-            onClick={onClickDelete(id)}
+            onConfirm={onClickDelete(id)}
           >
             Delete
-          </button>
+          </ConfirmButton>
         </div>
       </div>
       <section className='flex flex-col'>

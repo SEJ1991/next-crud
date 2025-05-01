@@ -1,6 +1,5 @@
 'use client';
 import { getProduct, ProductDetail } from '@/domains/product';
-import { getProduct, ProductDetail } from '@/domains/product';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
@@ -35,7 +34,9 @@ export function ProductDetailContainer({ id, returnCategory, returnPage }: Props
     router.push(`/products/${category}/${id}/edit`);
   };
 
-  const handleClickDelete = (id: number) => () => {};
+  const handleClickDelete = (id: number) => () => {
+    console.log(id);
+  };
 
   if (isLoading || isError || !product) return <div>로딩</div>;
   return (
