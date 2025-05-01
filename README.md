@@ -32,7 +32,7 @@
 <pre>
 next-crud/  
 ├── src/                     
-│   ├── app/                 # 페이지 라우팅                 
+│   ├── app/                 # 라우팅              
 │   ├── domains/                 
 │   │   └── [:domain]/       # 도메인 
 │   │       ├── components/  # 컴포넌트
