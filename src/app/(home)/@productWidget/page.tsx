@@ -1,7 +1,7 @@
 import { getAllProducts, ProductWidgetContainer } from '@/domains/product';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
-export const revalidate = 60 * 60;
+export const revalidate = 3600;
 
 export default async function ProductWidgetPage() {
   const queryClient = new QueryClient();
