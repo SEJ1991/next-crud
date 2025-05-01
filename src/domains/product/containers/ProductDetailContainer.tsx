@@ -1,7 +1,8 @@
 'use client';
-import { getProduct, ProductDetail } from '@/domains/product';
-import { useQuery } from '@tanstack/react-query';
+import { deleteProduct, getProduct, ProductDetail } from '@/domains/product';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 interface Props {
   id: string;
@@ -10,6 +11,7 @@ interface Props {
 }
 export function ProductDetailContainer({ id, returnCategory, returnPage }: Props) {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const {
     data: product,
@@ -22,20 +24,45 @@ export function ProductDetailContainer({ id, returnCategory, returnPage }: Props
     staleTime: 1000 * 60,
   });
 
+  const { mutate } = useMutation({
+    mutationFn: () => deleteProduct(id),
+    onMutate: () => {
+      const loadingId = toast.loading('Deleting...');
+      return { loadingId };
+    },
+    onSettled: (_, error, __, context) => {
+      toast.dismiss(context?.loadingId);
+
+      if (error) {
+        toast.error('Failed to delete the product.');
+        return;
+      }
+
+      toast.success('Product deleted successfully.');
+      queryClient.invalidateQueries({ queryKey: ['products', returnCategory, returnPage] });
+
+      let replacePathname = `/products`;
+      if (returnCategory !== 'all') {
+        replacePathname += `/${returnCategory}`;
+      }
+      router.replace(`${replacePathname}?page=${returnPage}`);
+    },
+  });
+
   const handleClickBack = () => {
-    if (returnCategory === 'all') {
-      router.push(`/products?page=${returnPage}`);
-      return;
+    let replacePathname = `/products`;
+    if (returnCategory !== 'all') {
+      replacePathname += `/${returnCategory}`;
     }
-    router.push(`/products/${returnCategory}?page=${returnPage}`);
+    router.push(`${replacePathname}?page=${returnPage}`);
   };
 
   const handleClickEdit = (id: number, category: string) => () => {
     router.push(`/products/${category}/${id}/edit`);
   };
 
-  const handleClickDelete = (id: number) => () => {
-    console.log(id);
+  const handleClickDelete = () => {
+    mutate();
   };
 
   if (isLoading || isError || !product) return <div>로딩</div>;

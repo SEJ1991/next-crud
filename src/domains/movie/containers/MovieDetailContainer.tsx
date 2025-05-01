@@ -25,8 +25,7 @@ export function MovieDetailContainer() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = decodeURIComponent(window.location.hash);
-      const match = hash.match(/id=(\d+);/);
+      const match = window.location.hash.match(/id=(\d+);/);
       setId(match?.[1] ?? '');
     };
 

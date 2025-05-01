@@ -31,7 +31,7 @@ export function MovieInfiniteGridListContainer({ status = 'all', limitPages = 10
   });
 
   const handleClickCard = (id: number) => () => {
-    window.location.hash = encodeURIComponent(`id=${id};`);
+    window.location.hash = `id=${id};`;
   };
 
   useEffect(() => {

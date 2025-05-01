@@ -20,7 +20,7 @@ export function MovieBannerContainer({ status = 'all' }: Props) {
   });
 
   const onClickMore = (id: number) => () => {
-    window.location.hash = encodeURIComponent(`id=${id};`);
+    window.location.hash = `id=${id};`;
   };
 
   useEffect(() => {

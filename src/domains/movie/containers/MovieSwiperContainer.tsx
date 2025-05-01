@@ -20,7 +20,7 @@ export function MovieSwiperContainer({ status = 'all' }: Props) {
   });
 
   const handleClickCard = (id: number) => () => {
-    window.location.hash = encodeURIComponent(`id=${id};`);
+    window.location.hash = `id=${id};`;
   };
 
   useEffect(() => {
